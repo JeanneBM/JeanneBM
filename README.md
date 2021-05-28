@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @JeanneBM
 - 👀 I’m interested in participation in currently changing world.
 - 🌱 I’m currently learning Python.
-- 💞️ I’m looking to collaborate on DevOps Best Practices.
+- 💞️ I’m looking to collaborate on DevSecOps Best Practices.
 - 📫 How to reach me - it's complicated...
 
 <!---

@@ -5,6 +5,10 @@
 - 📫 How to reach me - it's complicated...
  
 https://www.credly.com/users/joanna-bojko/badges
+
+https://github.com/jeannebm
+
+https://gitlab.com/JeanneBM
 <!---
 JeanneBM/JeanneBM is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.

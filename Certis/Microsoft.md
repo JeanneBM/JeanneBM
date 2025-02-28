@@ -5,6 +5,8 @@
 ![image](https://github.com/user-attachments/assets/310d334b-b952-44d3-b725-9ff37ffc28e7)
 ![image](https://github.com/user-attachments/assets/fd8ef3be-d47c-4137-9f03-41d40911b283)
 ![image](https://github.com/user-attachments/assets/ea5c6eff-6f43-4bf2-9cdc-1c59a728a73e)
+![image](https://github.com/user-attachments/assets/242db1ef-a6b9-4c30-8867-d10360727d00)
+
 
 * AZ-900: Microsoft Azure Fundamentals – Podstawy chmury i usług Azure. //
 * AI-900: Microsoft Azure AI Fundamentals – Podstawy sztucznej inteligencji w Azure.

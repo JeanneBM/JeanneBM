@@ -6,6 +6,8 @@
 ![image](https://github.com/user-attachments/assets/fd8ef3be-d47c-4137-9f03-41d40911b283)
 ![image](https://github.com/user-attachments/assets/ea5c6eff-6f43-4bf2-9cdc-1c59a728a73e)
 ![image](https://github.com/user-attachments/assets/242db1ef-a6b9-4c30-8867-d10360727d00)
+![image](https://github.com/user-attachments/assets/1a2b4898-a06b-4d9e-a692-8ce62145c334)
+
 
 
 * AZ-900: Microsoft Azure Fundamentals – Podstawy chmury i usług Azure. //

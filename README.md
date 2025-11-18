@@ -16,6 +16,4 @@ https://learn.microsoft.com/en-us/users/joannabojko-5711/
 JeanneBM/JeanneBM is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-![image](https://github.com/user-attachments/assets/e063a462-0058-4902-aedc-f5dfd05d2bab)
 
-![image](https://github.com/user-attachments/assets/6b7c8b62-7ae5-473f-8a02-4d68b40ba258)

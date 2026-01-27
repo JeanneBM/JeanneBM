@@ -17,4 +17,4 @@ JeanneBM/JeanneBM is a ✨ special ✨ repository because its `README.md` (this 
 You can click the Preview link to take a look at your changes.
 --->
 
-<img width="1241" height="608" alt="image" src="https://github.com/user-attachments/assets/2fceff84-54e9-4a7b-a246-d10af27ef7b2" />
+<img width="1240" height="611" alt="image" src="https://github.com/user-attachments/assets/5441e80d-296e-4593-a4b2-a7019ccc34d2" />

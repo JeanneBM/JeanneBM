@@ -1,17 +1,30 @@
-# Hi, I’m @JeanneBM
-**DevSecOps Engineer | Azure · Automation · AI Agents**
+# Hi, I’m JeanneBM 👋
 
-I combine infrastructure and software delivery experience with secure AI agent orchestration.
+**DevSecOps Engineer · Azure · Kubernetes · AI Agent Orchestration**
 
-I value thoughtful use of technology: engineering discipline, creativity, and responsibility.
-<img width="1240" height="611" alt="image" src="https://github.com/user-attachments/assets/5441e80d-296e-4593-a4b2-a7019ccc34d2" />
+I combine experience in infrastructure, CI/CD, and automation with AI agent engineering for cloud operations.
+
+My approach: **the model proposes, deterministic policy authorizes, and execution is verified.**
+
+## Featured project
+
+### [Azure Kubernetes Agentic Ops — PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc)
+
+- **Architecture:** code-defined orchestration of an LLM-assisted diagnostic agent and a deterministic remediation agent on AKS, with separate identities and permissions.
+- **Scenario:** correct an image-reference typo after policy checks and ACR validation, verify rollout health, and escalate cases outside the permitted scope.
+
+The PoC aims to evaluate response time from failure detection to verified recovery within this controlled workflow. Test coverage and current limitations are documented in the repository.
+
+**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI / AI Foundry**
+
+## Engineering background
+
+- **Cloud & infrastructure:** Azure, Linux, Docker, Kubernetes, Ansible.
+- **Software delivery:** Azure DevOps, Jenkins, GitLab, Harbor, Argo CD.
+- **Automation:** Python, Groovy, Bash, YAML pipelines.
+
+I value engineering discipline, creativity, and responsibility: clear boundaries, least privilege, and measurable outcomes.
 
 ## Connect
 
 [LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
-
-<!---
-JeanneBM/JeanneBM is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
-

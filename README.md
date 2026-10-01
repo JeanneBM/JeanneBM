@@ -1,18 +1,14 @@
-- 👋 Hi, I’m @JeanneBM
-- 🌱 I’m currently learning AI Agents, IBMi, Clouds, Italian ...
-- 💞️ I’m looking to collaborate on DevSecOps Best Practices.
-- 👀 I’m interested in contributing to a rapidly changing world:
+# Hi, I’m @JeanneBM
+**DevSecOps Engineer | Azure · Automation · AI Agents**
+
+I combine experience in infrastructure and software delivery with a growing focus on secure AI agent orchestration.
+
+I value thoughtful use of technology: engineering discipline, creativity, and responsibility.
 <img width="1240" height="611" alt="image" src="https://github.com/user-attachments/assets/5441e80d-296e-4593-a4b2-a7019ccc34d2" />
 
-- 📫 How to reach me - it's complicated...
+## Connect
 
-https://www.credly.com/users/joanna-bojko/badges
-
-https://github.com/jeannebm
-
-https://gitlab.com/JeanneBM
-
-https://learn.microsoft.com/en-us/users/joannabojko-5711/
+[LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
 
 <!---
 JeanneBM/JeanneBM is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

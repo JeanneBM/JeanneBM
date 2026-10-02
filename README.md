@@ -6,7 +6,7 @@ I combine experience in infrastructure, CI/CD, and automation with AI agent engi
 
 My approach: **the model proposes, deterministic policy authorizes, and execution is verified.**
 
-## Featured project
+## Featured projects
 
 ### [Azure Kubernetes Agentic Ops — PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc)
 
@@ -16,6 +16,15 @@ My approach: **the model proposes, deterministic policy authorizes, and executio
 The PoC aims to evaluate response time from failure detection to verified recovery within this controlled workflow. Test coverage and current limitations are documented in the repository.
 
 **Python · AKS · Azure Workload Identity · ACR · Azure OpenAI / AI Foundry**
+
+### [Azure Foundry RAG Agent](https://github.com/JeanneBM/jb-foundry-rag-agent)
+
+- **Architecture:** a versioned Foundry agent connected to an Azure AI Search Knowledge Base through MCP.
+- **Validation:** the client requires retrieval for each question and checks citations against the current results before displaying an answer.
+
+The project includes bounded conversation history, offline tests, and local deployment commands. Source validation establishes provenance; it does not guarantee that every claim follows from the cited evidence.
+
+**Python · Microsoft Foundry · Azure AI Search · MCP**
 
 ## Engineering background
 

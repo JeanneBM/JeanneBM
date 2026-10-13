@@ -1,8 +1,8 @@
-# Hi, I’m JeanneBM 👋
+# Hi, I’m Joanna — JeanneBM 👋
 
-**DevSecOps Engineer · Azure · Kubernetes · AI Agent Orchestration**
+**DevSecOps Engineer · Azure · Kubernetes · AI Agent Engineering**
 
-I combine experience in infrastructure, CI/CD, and automation with AI agent engineering for cloud operations.
+I combine infrastructure, CI/CD and automation experience with hands-on work on AI agents for cloud operations and retrieval-based applications.
 
 My approach: **the model proposes, deterministic policy authorizes, and execution is verified.**
 
@@ -10,29 +10,42 @@ My approach: **the model proposes, deterministic policy authorizes, and executio
 
 ### [Azure Kubernetes Agentic Ops — PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc)
 
-- **Architecture:** code-defined orchestration of an LLM-assisted diagnostic agent and a deterministic remediation agent on AKS, with separate identities and permissions.
-- **Scenario:** correct an image-reference typo after policy checks and ACR validation, verify rollout health, and escalate cases outside the permitted scope.
+My exploration of AI agents beyond incident tagging: LLM-assisted diagnosis followed by policy-controlled remediation and rollout verification on AKS.
 
-The PoC aims to evaluate response time from failure detection to verified recovery within this controlled workflow. Test coverage and current limitations are documented in the repository.
+- Separate diagnostic and remediation workloads, identities and permissions.
+- Automatic image-reference correction constrained by Kubernetes evidence, deterministic policy and ACR validation.
+- Human-review escalation when checks fail or recovery cannot be verified.
 
-**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI / AI Foundry**
+**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI**
 
-### [Azure Foundry RAG Agent](https://github.com/JeanneBM/jb-foundry-rag-agent)
+### [Azure Kubernetes Agentic Ops — Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 
-- **Architecture:** a versioned Foundry agent connected to an Azure AI Search Knowledge Base through MCP.
-- **Validation:** the client requires retrieval for each question and checks citations against the current results before displaying an answer.
+A dedicated evaluation project for the two-agent workflow: scenario checks, live AKS trial scripts and evidence records.
 
-The project includes bounded conversation history, offline tests, and local deployment commands. Source validation establishes provenance; it does not guarantee that every claim follows from the cited evidence.
+- S01–S06 cover typo repair, sidecar preservation, missing images, pull authentication failures, multiple failing containers and stale proposals.
+- Evaluation focuses on correct recovery, safe abstention and response time.
+- Mocked checks and live trial verdicts are recorded separately; a successful demo does not establish a speed advantage.
+
+**Python · pytest · PowerShell · Kubernetes · Scenario-based evaluation**
+
+### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
+
+A versioned Microsoft Foundry agent connected to an Azure AI Search Knowledge Base through MCP.
+
+- The CLI client requires retrieval for each question and validates citations against the current results.
+- Explicit agent-version selection, bounded conversation history and offline CI checks.
+- Source validation establishes provenance; answer faithfulness requires separate evaluation.
 
 **Python · Microsoft Foundry · Azure AI Search · MCP**
 
 ## Engineering background
 
 - **Cloud & infrastructure:** Azure, Linux, Docker, Kubernetes, Ansible.
-- **Software delivery:** Azure DevOps, Jenkins, GitLab, Harbor, Argo CD.
-- **Automation:** Python, Groovy, Bash, YAML pipelines.
+- **Software delivery:** GitHub Actions, Azure DevOps, Jenkins, GitLab, Harbor, Argo CD.
+- **Automation:** Python, Groovy, Bash, PowerShell, YAML pipelines.
+- **AI engineering focus:** agent orchestration, retrieval, least privilege, policy gates and evaluation.
 
-I value engineering discipline, creativity, and responsibility: clear boundaries, least privilege, and measurable outcomes.
+I’m developing toward AI Engineering, building on my DevSecOps background to create systems with clear boundaries and verifiable outcomes.
 
 ## Connect
 

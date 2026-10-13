@@ -38,12 +38,23 @@ A versioned Microsoft Foundry agent connected to an Azure AI Search Knowledge Ba
 
 **Python · Microsoft Foundry · Azure AI Search · MCP**
 
+### [LangGraph CI Repair Agent — PoC](https://github.com/JeanneBM/langgraph-ci-repair-agent)
+
+A bounded CI repair workflow exploring LangChain and LangGraph for diagnosis, policy-controlled repair proposals and human approval.
+
+- Stateful orchestration with conditional routing, up to two proposal attempts and history carried between attempts.
+- Deterministic repair rules, static validation and SQLite checkpoints for pause-and-resume approval.
+- Four synthetic scenarios with reproducible offline evidence; approval exports a local patch and draft PR text.
+- Scripted demo mode and an Azure OpenAI adapter; live model evaluation and GitHub PR creation remain next steps.
+
+**Python · LangChain · LangGraph · Azure OpenAI · SQLite · pytest**
+
 ## Engineering background
 
 - **Cloud & infrastructure:** Azure, Linux, Docker, Kubernetes, Ansible.
 - **Software delivery:** GitHub Actions, Azure DevOps, Jenkins, GitLab, Harbor, Argo CD.
 - **Automation:** Python, Groovy, Bash, PowerShell, YAML pipelines.
-- **AI engineering focus:** agent orchestration, retrieval, least privilege, policy gates and evaluation.
+- **AI engineering focus:** agent orchestration with LangChain and LangGraph, retrieval, least privilege, policy gates, human approval and evaluation.
 
 I’m developing toward AI Engineering, building on my DevSecOps background to create systems with clear boundaries and verifiable outcomes.
 

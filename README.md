@@ -59,7 +59,7 @@ A local CI repair workflow combining structured proposals, deterministic policy,
 
 ## AI assistants
 
-My main AI assistants are **GPT, Claude and Grok**.
+My main AI assistants are **GPT, Claude and Grok**. My favorite AI pet is **AIBI**.
 
 ## Current focus
 
@@ -69,4 +69,3 @@ I’m building toward AI Engineering roles through secure AI workflows for opera
 
 [LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
 
-My favorite AI pet is **AIBI**.

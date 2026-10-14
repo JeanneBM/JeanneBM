@@ -57,6 +57,10 @@ A local CI repair workflow combining structured proposals, deterministic policy,
 
 **Python · LangChain · LangGraph · Azure OpenAI adapter · SQLite · pytest**
 
+## AI assistants
+
+My main AI assistants are **GPT, Claude and Grok**.
+
 ## Current focus
 
 I’m building toward AI Engineering roles through secure AI workflows for operations, cloud automation and retrieval — with clear safety boundaries, human oversight and verifiable outcomes.

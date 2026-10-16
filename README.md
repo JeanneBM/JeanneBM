@@ -24,7 +24,7 @@ My main project explores AI agents beyond incident tagging: LLM-assisted diagnos
 - Repairs constrained by Kubernetes evidence, ACR validation, same-registry checks and drift detection; out-of-scope cases escalate for human review.
 - Scenario runners, automated checks and captured evidence assess correct recovery, safe abstention and policy enforcement.
 
-**Evaluation status:** S01–S06 each have one recorded current live trial; S06 uses a scripted proposal. S07–S10 have prepared controlled runners and offline checks, with live trials still pending. These are preliminary observations, not a repeatability benchmark. See the [scenario status and evidence](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/blob/main/eval/README.md).
+**Live evaluation:** All ten scenarios (S01–S10) were run on Azure AKS. The latest recorded batch has **9 passed and 1 inconclusive (S05)**. S05 safely escalated without executing a repair, but its refusal reason did not satisfy the scenario criterion. S06 uses a scripted proposal; S07–S10 are controlled security trials. These observations are preliminary and do not establish repeatability. See the [recorded batch and screenshot](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/tree/main/eval/evidence/S01-S10) and [scenario descriptions](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/blob/main/eval/README.md).
 
 **Python · AKS · Azure Workload Identity · ACR · Azure OpenAI · pytest · PowerShell**
 
@@ -42,7 +42,7 @@ The [earlier PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) 
 
 ## Current focus
 
-I’m developing toward AI Engineering roles through secure workflows for operations, cloud automation and retrieval. My next priority is completing the planned AKS scenarios, checking repeatability and comparing the agent workflow with a deterministic baseline.
+I’m developing toward AI Engineering roles through secure workflows for operations, cloud automation and retrieval. My next priorities are investigating the inconclusive S05 result, checking repeatability and comparing the agent workflow with a deterministic baseline.
 
 I keep implementation, automated checks and live Azure evidence separate so the limits of each result are visible.
 

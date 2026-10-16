@@ -40,12 +40,6 @@ The [earlier PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) 
 | [Agent Observability Monitor](https://github.com/JeanneBM/observability-monitor-agent) | Read-only Kubernetes/JSONL collection, deterministic anomaly rules, persistent cursors and deduplicated findings. | Collector runs on the platform host; detection depends on available telemetry. |
 | [Agent Anomaly ML](https://github.com/JeanneBM/agent-anomaly-ml) | Comparison of threshold rules, robust statistics, Mahalanobis distance and Isolation Forest, including hybrid detectors. | Separate experiment on synthetic telemetry; real-agent integration is pending. |
 
-## Current focus
-
-I’m developing toward AI Engineering roles through secure workflows for operations, cloud automation and retrieval. My next priorities are investigating the inconclusive S05 result, checking repeatability and comparing the agent workflow with a deterministic baseline.
-
-I keep implementation, automated checks and live Azure evidence separate so the limits of each result are visible.
-
 ## AI assistants
 
 My main AI assistants are **GPT, Claude and Grok**.

@@ -14,58 +14,44 @@ I build secure, cloud-native systems with a strong focus on automation, policy e
 - **Automation & integration:** Python, Groovy, Bash, PowerShell and YAML pipelines.
 - **AI agent engineering:** LangChain, LangGraph, retrieval workflows, validation gates, human approval and evaluation.
 
-## Featured projects
+## Featured project
 
-### [Azure Kubernetes Agentic Ops — PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc)
+### [Azure Kubernetes Agentic Ops & Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 
-My exploration of AI agents beyond incident tagging: a two-agent AKS proof of concept combining LLM-assisted diagnosis with policy-controlled remediation of image-reference errors and rollout verification.
+My main project explores AI agents beyond incident tagging: LLM-assisted diagnosis of AKS image-pull failures, followed by deterministic authorization, bounded image-reference repair and rollout verification.
 
-- Separate diagnostic and remediation workloads, identities and permissions.
-- Actions constrained by Kubernetes evidence, ACR validation and deterministic safety checks.
-- Escalation for human review when checks fail or recovery cannot be verified.
+- Separate diagnostic and remediation workloads, Kubernetes permissions and Azure Workload Identities.
+- Repairs constrained by Kubernetes evidence, ACR validation, same-registry checks and drift detection; out-of-scope cases escalate for human review.
+- Scenario runners, automated checks and captured evidence assess correct recovery, safe abstention and policy enforcement.
 
-**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI**
+**Evaluation status:** S01–S06 each have one recorded current live trial; S06 uses a scripted proposal. S07–S10 have prepared controlled runners and offline checks, with live trials still pending. These are preliminary observations, not a repeatability benchmark. See the [scenario status and evidence](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/blob/main/eval/README.md).
 
-### [Azure Kubernetes Agentic Ops — Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
+**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI · pytest · PowerShell**
 
-A dedicated evaluation project for scenario-based testing of the two-agent workflow.
+The [earlier PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) documents the preceding stage.
 
-- S01–S06 cover typo repair, sidecar preservation, missing images, pull authentication failures, multiple failing containers and stale proposals.
-- Live AKS trial scripts and evidence collection support assessment of recovery correctness, policy compliance and safe abstention.
-- Mocked checks and live trial verdicts are recorded separately.
+## Supporting projects
 
-**Python · pytest · PowerShell · Kubernetes**
-
-### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
-
-A versioned Microsoft Foundry agent connected to an Azure AI Search Knowledge Base through MCP, with source-provenance checks in the CLI client.
-
-- Retrieval required for each question.
-- Citation validation against the current retrieval results.
-- Explicit agent-version selection and bounded conversation history.
-
-**Python · Microsoft Foundry · Azure AI Search · MCP**
-
-### [LangGraph CI Repair Agent — PoC](https://github.com/JeanneBM/langgraph-ci-repair-agent)
-
-A local CI repair workflow combining structured proposals, deterministic policy, static validation and human approval before patch export.
-
-- Stateful LangGraph orchestration with conditional routing and bounded proposal attempts.
-- Deterministic repair rules tested against four synthetic scenarios.
-- SQLite checkpoints support approval and resumption across processes.
-- Approval exports a local patch and draft PR text.
-
-**Python · LangChain · LangGraph · Azure OpenAI adapter · SQLite · pytest**
-
-## AI assistants
-
-My main AI assistants are **GPT, Claude and Grok**. My favorite AI pet is **AIBI**.
+| Project | What it demonstrates | Scope |
+| --- | --- | --- |
+| [Agents Platform — Bicep](https://github.com/JeanneBM/agents-platform-bicep) | Shared Azure infrastructure and application adapters for AKS Ops, RAG, CI Repair and monitoring; independent repo scripts remain available. | One-command lab orchestration with offline checks; integrated Azure deployment validation is pending. |
+| [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Versioned Foundry agent with AI Search retrieval over MCP, required retrieval and citation checks against current results. | Provenance checks establish source membership; they do not establish answer truth. |
+| [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Stateful proposals, deterministic policy, static validation, bounded retries and SQLite checkpoints. | Human approval exports a local patch and draft PR text; no automatic PR creation. |
+| [Agent Observability Monitor](https://github.com/JeanneBM/observability-monitor-agent) | Read-only Kubernetes/JSONL collection, deterministic anomaly rules, persistent cursors and deduplicated findings. | Collector runs on the platform host; detection depends on available telemetry. |
+| [Agent Anomaly ML](https://github.com/JeanneBM/agent-anomaly-ml) | Comparison of threshold rules, robust statistics, Mahalanobis distance and Isolation Forest, including hybrid detectors. | Separate experiment on synthetic telemetry; real-agent integration is pending. |
 
 ## Current focus
 
-I’m building toward AI Engineering roles through secure AI workflows for operations, cloud automation and retrieval — with clear safety boundaries, human oversight and verifiable outcomes.
+I’m developing toward AI Engineering roles through secure workflows for operations, cloud automation and retrieval. My next priority is completing the planned AKS scenarios, checking repeatability and comparing the agent workflow with a deterministic baseline.
+
+I keep implementation, automated checks and live Azure evidence separate so the limits of each result are visible.
+
+## AI assistants
+
+My main AI assistants are **GPT, Claude and Grok**.
 
 ## Connect
 
 [LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
 
+My favorite AI pet is **AIBI**.

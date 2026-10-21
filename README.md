@@ -2,43 +2,42 @@
 
 **DevSecOps Engineer | Azure | Kubernetes | AI Agent Engineering**
 
-I build secure, cloud-native systems with a strong focus on automation, policy enforcement and AI-assisted operations. My work combines DevSecOps and platform engineering with AI agents for operations, CI repair and retrieval-based workflows.
+I build secure, cloud-native systems and AI agent PoCs, combining platform engineering, automation and policy-controlled execution.
 
 **The model proposes; deterministic policy authorizes; execution is verified.**
 
 ## Core strengths
 
-- **Cloud & platforms:** Azure, Kubernetes, AKS, Linux, Docker and Ansible.
-- **Secure delivery:** DevSecOps practices, workload identities, least privilege and policy enforcement.
+- **Cloud & platforms:** Azure, Kubernetes, AKS, Linux and Docker.
+- **Secure delivery:** DevSecOps, workload identities, least privilege and policy enforcement.
 - **CI/CD:** GitHub Actions, Azure DevOps, Jenkins, GitLab, Harbor and Argo CD.
-- **Automation & integration:** Python, Groovy, Bash, PowerShell and YAML pipelines.
-- **AI agent engineering:** LangChain, LangGraph, retrieval workflows, validation gates, human approval and evaluation.
+- **Automation:** Python, Groovy, Bash, PowerShell and YAML.
+- **AI agents:** LangChain, LangGraph, RAG, human review and evaluation.
 
 ## Featured project
 
 ### [Azure Kubernetes Agentic Ops & Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 
-My main project explores AI agents beyond incident tagging: LLM-assisted diagnosis of AKS image-pull failures, followed by deterministic authorization, bounded image-reference repair and rollout verification.
+Two agents for AKS incident recovery: LLM-assisted diagnosis followed by deterministic policy checks, bounded image repair and rollout verification. Separate identities and permissions keep diagnosis and execution apart.
 
-- Separate diagnostic and remediation workloads, Kubernetes permissions and Azure Workload Identities.
-- Repairs constrained by Kubernetes evidence, ACR validation, same-registry checks and drift detection; out-of-scope cases escalate for human review.
-- Scenario runners, automated checks and captured evidence assess correct recovery, safe abstention and policy enforcement.
+Live AKS trials cover recovery, escalation and security scenarios. Evaluation is ongoing; recorded results and evidence are available in the repository.
 
-**Live evaluation:** All ten scenarios (S01–S10) were run on Azure AKS. The latest recorded batch has **9 passed and 1 inconclusive (S05)**. S05 safely escalated without executing a repair, but its refusal reason did not satisfy the scenario criterion. S06 uses a scripted proposal; S07–S10 are controlled security trials. These observations are preliminary and do not establish repeatability. See the [recorded batch and screenshot](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/tree/main/eval/evidence/S01-S10) and [scenario descriptions](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/blob/main/eval/README.md).
+**Python · AKS · Azure OpenAI · Azure Workload Identity · ACR**
 
-**Python · AKS · Azure Workload Identity · ACR · Azure OpenAI · pytest · PowerShell**
+## More projects
 
-The [earlier PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) documents the preceding stage.
+These projects explore different parts of AI agent engineering. Maturity and validation status are documented in each repository.
 
-## Supporting projects
-
-| Project | What it demonstrates | Scope |
-| --- | --- | --- |
-| [Agents Platform — Bicep](https://github.com/JeanneBM/agents-platform-bicep) | Shared Azure infrastructure and application adapters for AKS Ops, RAG, CI Repair and monitoring; independent repo scripts remain available. | One-command lab orchestration with offline checks; integrated Azure deployment validation is pending. |
-| [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Versioned Foundry agent with AI Search retrieval over MCP, required retrieval and citation checks against current results. | Provenance checks establish source membership; they do not establish answer truth. |
-| [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Stateful proposals, deterministic policy, static validation, bounded retries and SQLite checkpoints. | Human approval exports a local patch and draft PR text; no automatic PR creation. |
-| [Agent Observability Monitor](https://github.com/JeanneBM/observability-monitor-agent) | Read-only Kubernetes/JSONL collection, deterministic anomaly rules, persistent cursors and deduplicated findings. | Collector runs on the platform host; detection depends on available telemetry. |
-| [Agent Anomaly ML](https://github.com/JeanneBM/agent-anomaly-ml) | Comparison of threshold rules, robust statistics, Mahalanobis distance and Isolation Forest, including hybrid detectors. | Separate experiment on synthetic telemetry; real-agent integration is pending. |
+| Project | Focus |
+| --- | --- |
+| [Agent Policy Guard](https://github.com/JeanneBM/agent-policy-guard) | Early PoC of reusable, deterministic authorization for agent actions. |
+| [Regulatory RAG Assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Research PoC for AI Act and DORA retrieval with source and quote checks. |
+| [Dual Agent Code Workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Local GPT–Claude code proposals and peer review, with human decisions. |
+| [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | CI repair proposals with policy checks and human review. |
+| [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Foundry agent with AI Search retrieval over MCP and citation checks. |
+| [Agent Observability Monitor](https://github.com/JeanneBM/observability-monitor-agent) | Read-only telemetry collection and rule-based anomaly detection. |
+| [Agent Anomaly ML](https://github.com/JeanneBM/agent-anomaly-ml) | Comparing rules and ML detectors on synthetic agent telemetry. |
+| [Agents Platform — Bicep](https://github.com/JeanneBM/agents-platform-bicep) | Shared Azure infrastructure and lab orchestration for agent projects. |
 
 ## AI assistants
 
@@ -47,4 +46,3 @@ My main AI assistants are **GPT, Claude and Grok**.
 ## Connect
 
 [LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
-

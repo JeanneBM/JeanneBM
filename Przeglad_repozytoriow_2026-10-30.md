@@ -4,14 +4,6 @@ Aktualizacja: 30 października 2026.
 
 Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej listy. Zadania zależne rozpoczynaj po spełnieniu warunku w tabeli.
 
-## P0 — pozostałe czynności bezpieczeństwa
-
-| Kolejność | Zakres | Do zrobienia |
-|---|---|---|
-| 1 | [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv), [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Potwierdzić, czy dawne poświadczenia są nadal używane. Jeśli tak, odwołać tokeny i zmienić hasła/klucze w odpowiednich kontach i usługach; jeśli nie, potwierdzić wycofanie usług i brak ponownego użycia danych. |
-| 2 | Oba repo Panda | Zgłosić do GitHub Support usunięcie pozostałych nieosiągalnych commitów/cache/refów PR zawierających ujawnione dane. |
-| 3 | [Chat Server](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements), [Symfony](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Potwierdzić, czy dawne wartości z konfiguracji były używane poza przykładami. Jeśli tak, zmienić odpowiednie sekrety aplikacyjne i hasła bazy w działających środowiskach. |
-
 ## P1 — najbliższa praca
 
 Readiness jest pierwszym projektem rozwojowym do zakończenia pilota lub zmiany priorytetu przez Joannę.

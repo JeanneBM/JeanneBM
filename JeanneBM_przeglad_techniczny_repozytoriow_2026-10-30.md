@@ -8,7 +8,7 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 
 | Priorytet | Kiedy działać | Cel |
 |---|---|---|
-| P1 | Najpierw | Sprawdzić aktualny CI Foundry RAG i poprawić status na profilu. |
+| P1 | Najpierw | Uruchomić pilot AKS Readiness Diagnostic Agent; następnie sprawdzić CI Foundry RAG i poprawić status na profilu. |
 | P2 | Następny etap | Zebrać dowody działania najważniejszych PoC i jednej integracji. |
 | P3 | Po P1/P2 lub dla wybranego demo | Zweryfikować pozostałe aktywne projekty i narzędzia. |
 | P4 | Po spełnieniu zależności | Rozbudować Lab, ML oraz wspólną platformę na sprawdzonych komponentach. |
@@ -16,26 +16,26 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 | P6 | Dopiero po wyborze pomysłu | Backlog bez zaplanowanego wykonania. |
 | P7 | W miarę korzystania | Materiały referencyjne i historia. |
 
-Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Zamknięte etapy bez konkretnego otwartego zadania mają osobną sekcję i nie otrzymują priorytetu działania. Samo zachowanie repo jako punktu odniesienia nie jest zadaniem. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
+Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Przy kolejnych aktualizacjach zachować Readiness na pierwszym miejscu do zakończenia pilota lub zmiany priorytetu przez Joannę. Zamknięte etapy bez konkretnego otwartego zadania mają osobną sekcję i nie otrzymują priorytetu działania. Samo zachowanie repo jako punktu odniesienia nie jest zadaniem. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
 
 ## Projekty niebędące forkami — 66 repo według pilności
 
-### P1 — najpierw: bieżące sprawdzenia
+### P1 — najpierw: pilot Readiness i bieżące sprawdzenia
 
-Krótka kolejka do sprawdzenia przed kolejnymi pracami. P1 nie oznacza potwierdzonego incydentu ani awarii produkcyjnej.
+**Pierwszy projekt do pracy: AKS Readiness Diagnostic Agent — zgodnie z priorytetem wskazanym przez Joannę.** Najbliższy rezultat to nagranie rzeczywistych przypadków na kind i pilot A1/C1/H. Sprawdzenie Foundry RAG i aktualizacja profilu są kolejnymi czynnościami; nie blokują rozpoczęcia Readiness. P1 nie oznacza potwierdzonego incydentu ani awarii produkcyjnej.
 
 | Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
 |---|---|---|---|---|---|
+| [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Implementacja / przed pilotem | A1/C1/H, kolektor, replay i lokalny lab Uvicorn/Go; CI zielone. Pełny kind i model czekają na walidację. | [offline-checks: success](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/actions/runs/40382145081) | Nagrać osiem realnych przypadków na kind, uruchomić A1, potem powtarzany pilot C1/H. | P1 |
 | [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Implementacja / niepotwierdzona integracja | Foundry + Search/MCP, walidacja cytowań i lab lifecycle. Ostatni zapisany CI czerwony, z 20.08; późniejszy kod wymaga nowego sprawdzenia. | [.github/workflows/ci.yml: failure](https://github.com/JeanneBM/azure-foundry-rag-agent/actions/runs/32368674184) | Uruchomić CI na obecnym main i usunąć przyczynę niepowodzenia; potem setup → known/unknown smoke → delete. | P1 |
 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Profil / dokumentacja | README prezentuje 9 projektów; nadal mówi „Evaluation is ongoing”. | Brak zapisanych runów Actions | Zaktualizować status Eval na zamknięte v0.2.0; dodać Readiness, Lab i Auditor bez przeładowania profilu. | P1 |
 
 ### P2 — następny etap: walidacja kluczowych PoC
 
-Wykonywać kolejno. Readiness dostarcza pierwszy rzeczywisty pilot; Guard i Monitor można następnie sprawdzić na jednym wybranym przepływie.
+Po pilocie Readiness z P1 sprawdzić Guard i Monitor na jednym wybranym przepływie, a następnie pozostałe PoC z tej sekcji.
 
 | Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
 |---|---|---|---|---|---|
-| [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Implementacja / przed pilotem | A1/C1/H, kolektor, replay i lokalny lab Uvicorn/Go; CI zielone. Pełny kind i model czekają na walidację. | [offline-checks: success](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/actions/runs/40382145081) | Nagrać osiem realnych przypadków na kind, uruchomić A1, potem powtarzany pilot C1/H. | P2 |
 | [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | PoC biblioteki | Silnik YAML, allow/deny/escalate/require_human, wrapper i audyt; CI zielone. Brak migracji pozostałych repo. | [tests: success](https://github.com/JeanneBM/agent-policy-guard/actions/runs/39468858553) | Podłączyć jeden rzeczywisty przepływ CI lub labu; dowieść testem, że deny uniemożliwia wywołanie executora. | P2 |
 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | PoC monitoringu | Reguły, JSONL/Kubernetes, watch, SQLite i health; CI zielone. Emitery są opisane jako zintegrowane, brak tu dowodu pełnego live cyklu. | [Test monitor: success](https://github.com/JeanneBM/observability-monitor-agent/actions/runs/38720770387) | Zebrać prawdziwe zdarzenia z jednego agenta; sprawdzić alarm, restart i przerwę źródła. | P2 |
 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | PoC na scenariuszach | LangGraph, 4 scenariusze, polityka, checkpointy i zgoda człowieka; CI zielone. Brak realnego PR i zdalnego CI. | [Tests: success](https://github.com/JeanneBM/langgraph-ci-repair-agent/actions/runs/38720793161) | Sprawdzić live model na S01; następnie adapter rzeczywistych logów Actions i izolowana walidacja patcha. | P2 |

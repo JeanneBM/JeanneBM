@@ -6,15 +6,16 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 
 ## Status P0 — 30 października 2026
 
-- **Wykonane:** bieżące pliki obu Panda labów są oczyszczone; ponownie sprawdzono po jednej gałęzi i brak tagów.
-- **Przygotowane, niewykonane:** [skrypt oczyszczenia historii](scripts/clear-pandaenv-history.ps1), zachowujący opisy i autorstwo commitów oraz używający force-with-lease. Wymaga lokalnego, zalogowanego GitHub CLI. Plugin nie obsługuje utworzenia commita początkowego; jednorazowy workflow nie wystartował i został wycofany.
-- **Niepotwierdzone:** unieważnienie/rotacja używanych poświadczeń i usunięcie kopii/cache GitHuba. [Instrukcja domknięcia](docs/pandaenv-credential-closeout.md).
+- **WYKONANE:** usunięcie sekretów i zapisanego stanu usług z bieżących plików obu Panda labów.
+- **WYKONANE I ZWERYFIKOWANE:** Joanna uruchomiła skrypt i przepisała historię obu gałęzi `final`. Niezależnie odczytano z GitHuba wszystkie osiągalne commity: 2 w `jb_pandaenv` i 3 w `jb_pandaenvAWS`; brak dawnych wolumenów i wskazanych plików poświadczeń w każdym snapshotcie. Każde repo ma tylko `final`, bez tagów.
+- Zweryfikowane heady: `jb_pandaenv` — `568363eed8d94e089139e5107d55df545ce49206`; `jb_pandaenvAWS` — `034728e57ded9925bb340dae8ef9f1e369bb8d14`.
+- **NIEPOTWIERDZONE:** unieważnienie/rotacja nadal używanych poświadczeń oraz usunięcie nieosiągalnych commitów/cache i kopii zewnętrznych. [Dalsze kroki](docs/pandaenv-credential-closeout.md). To jedyne pozostające czynności P0; nie uruchamiać ponownie zakończonego skryptu ani nie przywracać starej historii.
 
 ## Kolejność działań według pilności
 
 | Priorytet | Kiedy działać | Cel |
 |---|---|---|
-| P0 | Pilnie: ujawnienie poświadczeń | Unieważnić używane poświadczenia i oczyścić historię pandaenv; bieżące pliki są już oczyszczone. |
+| P0 | Pilnie: ujawnienie poświadczeń | Potwierdzić unieważnienie używanych poświadczeń i usunięcie pozostałych kopii/cache; pliki oraz historia gałęzi Panda są oczyszczone. |
 | P1 | Najpierw w rozwoju | Uruchomić pilot AKS Readiness Diagnostic Agent; następnie sprawdzić CI Foundry RAG i poprawić status na profilu. |
 | P2 | Następny etap | Zebrać dowody działania najważniejszych PoC i jednej integracji. |
 | P3 | Po P1/P2 lub dla wybranego demo | Zweryfikować pozostałe aktywne projekty i narzędzia. |
@@ -27,14 +28,14 @@ Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Przy 
 
 ## Projekty niebędące forkami — 66 repo według pilności
 
-### P0 — ujawnienie poświadczeń: rotacja i historia
+### P0 — pozostałe czynności: rotacja i kopie zewnętrzne
 
-Usunięcie plików z bieżącej gałęzi jest wykonane. Nie unieważnia wcześniej opublikowanych danych ani nie usuwa ich ze starych commitów, klonów i cache. Rotacja oraz oczyszczenie historii nie zostały potwierdzone. P0 ma pierwszeństwo przed planem rozwoju; Readiness pozostaje pierwszym projektem rozwojowym P1.
+Pliki i osiągalna historia obu gałęzi `final` są oczyszczone i zweryfikowane. Pozostają potwierdzenie unieważnienia używanych poświadczeń oraz usunięcie kopii/cache poza tymi gałęziami. P0 nie wymaga ponownego czyszczenia plików ani uruchomienia skryptu. Readiness pozostaje pierwszym projektem rozwojowym P1.
 
 | Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
 |---|---|---|---|---|---|
-| [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv) | Ujawnione poświadczenia — bieżąca gałąź oczyszczona | Potwierdzono zapisany stan Jenkins/Artifactory oraz sekret agenta w skryptach. Usunięto runtime, klucze i sekrety z final; historia Git nadal je zawiera. | Brak zapisanych runów Actions | Odwołać/zmienić wszystkie używane ujawnione poświadczenia. Oczyścić historię Git i kopie/cache; potem ponownie przeskanować. Nie przywracać dawnych wolumenów. | P0 |
-| [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Ujawnione poświadczenia — bieżąca gałąź oczyszczona | Potwierdzono zapisany stan Jenkins/Artifactory oraz sekret agenta w skryptach. Usunięto runtime, klucze i sekrety z final; historia Git nadal je zawiera. | Brak zapisanych runów Actions | Odwołać/zmienić wszystkie używane ujawnione poświadczenia. Oczyścić historię Git i kopie/cache; potem ponownie przeskanować. Nie przywracać dawnych wolumenów. | P0 |
+| [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv) | Pliki i historia gałęzi oczyszczone | Zweryfikowano wszystkie osiągalne commity final (2/3), brak dawnych wolumenów i wskazanych plików poświadczeń; jedna gałąź, brak tagów. | Brak zapisanych runów Actions | Potwierdzić odwołanie/rotację nadal używanych poświadczeń lub wycofanie usług. Zgłosić nieosiągalne commity/cache do GitHub Support. Nie uruchamiać ponownie skryptu. | P0 |
+| [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Pliki i historia gałęzi oczyszczone | Zweryfikowano wszystkie osiągalne commity final (2/3), brak dawnych wolumenów i wskazanych plików poświadczeń; jedna gałąź, brak tagów. | Brak zapisanych runów Actions | Potwierdzić odwołanie/rotację nadal używanych poświadczeń lub wycofanie usług. Zgłosić nieosiągalne commity/cache do GitHub Support. Nie uruchamiać ponownie skryptu. | P0 |
 
 ### P1 — najpierw: pilot Readiness i bieżące sprawdzenia
 
@@ -168,9 +169,9 @@ Pełna tabela 71 forków jest zachowana w [załączniku](docs/forki-repozytoriow
 - Readiness ma działającą implementację i offline/native-Go checks, ale dokumentacja pozostawia pełny kind pipeline i model pilot do lokalnej walidacji.
 - Agent Policy Guard nie jest jeszcze wspólną biblioteką używaną przez pozostałe repo — to konkretna luka integracyjna, nie powód do pisania kolejnego silnika.
 - Monitor ma emitery i collector; Anomaly ML ma wyniki syntetyczne, a nie dowód skuteczności na realnym strumieniu.
-- Aktualizacja bezpieczeństwa: w obu pandaenv potwierdzono credentials.xml z opisami poświadczeń GitHub, zapisany stan usług i literalny sekret agenta. Bieżące gałęzie final oczyszczono bez odszyfrowywania poświadczeń; rotacja i usunięcie historii pozostają niepotwierdzone. Poprzednia kwalifikacja P7 była błędna.
+- Aktualizacja bezpieczeństwa: w obu pandaenv potwierdzono credentials.xml z opisami poświadczeń GitHub, zapisany stan usług i literalny sekret agenta. Bieżące gałęzie final i ich osiągalne historie oczyszczono bez odszyfrowywania poświadczeń. Rotacja i usunięcie kopii poza gałęziami pozostają niepotwierdzone. Poprzednia kwalifikacja P7 była błędna.
 - Dodatkowo usunięto śledzony .env z Chat Servera, usunięto jego współdzielone domyślne sekrety runtime, wyczyszczono APP_SECRET w Symfony i zastąpiono konkretną konfigurację Foundry szablonem w ai-knowledge-base. Nie ustalono aktywności dawnych wartości.
 - Weryfikacja zmian: brak rozpoznanych starych wartości w zmienionych plikach, brak usuniętych ścieżek w bieżących drzewach, poprawna składnia pięciu plików YAML. Chat Server: Maven verify i testy frontendowe przeszły po dodaniu losowego JWT wyłącznie w profilu testowym. Nie uruchamiano dawnych usług Jenkins/Artifactory ani Symfony.
 - Zakres dodatkowego sprawdzenia: nazwy plików w 66 własnych repo, 76 wybranych plików konfiguracyjnych i 236 plików tekstowych w sześciu powiązanych repo. Część plików nakłada się; nie jest to pełny skan historii, archiwów, plików binarnych ani wszystkich branchy.
-- Pierwotny przegląd był tylko odczytem. Po zgłoszeniu ujawnienia wprowadzono opisane wyżej zmiany sanitizujące w pięciu repo. Repozytoriów nie usuwano ani nie archiwizowano; historii Git nie przepisano.
+- Pierwotny przegląd był tylko odczytem. Po zgłoszeniu ujawnienia wprowadzono opisane wyżej zmiany sanitizujące w pięciu repo. Repozytoriów nie usuwano ani nie archiwizowano; historię obu gałęzi Panda przepisano i zweryfikowano po lokalnym wykonaniu skryptu przez Joannę.
 

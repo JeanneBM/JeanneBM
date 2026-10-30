@@ -8,7 +8,7 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 
 | Priorytet | Kiedy działać | Cel |
 |---|---|---|
-| P1 | Najpierw | Potwierdzić cleanup Eval, aktualny CI Foundry RAG i poprawić status na profilu. |
+| P1 | Najpierw | Sprawdzić aktualny CI Foundry RAG i poprawić status na profilu. |
 | P2 | Następny etap | Zebrać dowody działania najważniejszych PoC i jednej integracji. |
 | P3 | Po P1/P2 lub dla wybranego demo | Zweryfikować pozostałe aktywne projekty i narzędzia. |
 | P4 | Po spełnieniu zależności | Rozbudować Lab, ML oraz wspólną platformę na sprawdzonych komponentach. |
@@ -16,17 +16,16 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 | P6 | Dopiero po wyborze pomysłu | Backlog bez zaplanowanego wykonania. |
 | P7 | W miarę korzystania | Materiały referencyjne i historia. |
 
-Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Przykładowo Eval jest zamknięte, ale niepotwierdzony cleanup wymaga sprawdzenia. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
+Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Zamknięte etapy bez konkretnego otwartego zadania mają osobną sekcję i nie otrzymują priorytetu działania. Samo zachowanie repo jako punktu odniesienia nie jest zadaniem. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
 
 ## Projekty niebędące forkami — 66 repo według pilności
 
-### P1 — najpierw: bieżące sprawdzenia i zamknięcie etapu
+### P1 — najpierw: bieżące sprawdzenia
 
 Krótka kolejka do sprawdzenia przed kolejnymi pracami. P1 nie oznacza potwierdzonego incydentu ani awarii produkcyjnej.
 
 | Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
 |---|---|---|---|---|---|
-| [azure-kubernetes-agentic-ops-eval](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval) | Zamknięty eksperyment | v0.2.0 opublikowane; wyniki i ograniczenia zachowane, ostatnie Test/Security zielone. | [Security: success](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/actions/runs/40859006483) | Zachować jako punkt odniesienia; potwierdzić cleanup Azure. Dalsze eksperymenty prowadzić osobno. | P1 |
 | [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Implementacja / niepotwierdzona integracja | Foundry + Search/MCP, walidacja cytowań i lab lifecycle. Ostatni zapisany CI czerwony, z 20.08; późniejszy kod wymaga nowego sprawdzenia. | [.github/workflows/ci.yml: failure](https://github.com/JeanneBM/azure-foundry-rag-agent/actions/runs/32368674184) | Uruchomić CI na obecnym main i usunąć przyczynę niepowodzenia; potem setup → known/unknown smoke → delete. | P1 |
 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Profil / dokumentacja | README prezentuje 9 projektów; nadal mówi „Evaluation is ongoing”. | Brak zapisanych runów Actions | Zaktualizować status Eval na zamknięte v0.2.0; dodać Readiness, Lab i Auditor bez przeładowania profilu. | P1 |
 
@@ -134,6 +133,14 @@ Brak pilnej pracy wdrożeniowej. Porządkowanie dokumentacji jest opcjonalne i w
 | [python-knowledge-base](https://github.com/JeanneBM/python-knowledge-base) | Baza wiedzy | Obszerna powtórka PL i przykłady; brak runów Actions. | Brak zapisanych runów Actions | Używać do powtórek; wybrane wykonywalne przykłady weryfikować przed dopisywaniem. | P7 |
 | [quantum-progamming](https://github.com/JeanneBM/quantum-progamming) | Notatki / materiały | README ze zrzutami; brak programu do uruchomienia. | Brak zapisanych runów Actions | Dodać jeden odtwarzalny notebook/eksperyment tylko gdy wracasz do Qiskit. | P7 |
 | [security-knowledge-base](https://github.com/JeanneBM/security-knowledge-base) | Baza wiedzy | Powtórka DevSecOps/SAST/SCA/Trivy/SBOM i materiały; brak runów Actions. | Brak zapisanych runów Actions | Powiązać pojęcia z przykładami z własnych projektów; aktualizować w miarę nauki. | P7 |
+
+### Zamknięte etapy — brak działań
+
+Repozytoria ukończone w ustalonym zakresie; nie są częścią aktywnej kolejki. Historyczne ograniczenia wyników pozostają opisane w dokumentacji projektu. Niepotwierdzony w dawnym closeout cleanup nie jest tu ponownie otwierany jako zadanie; raport nie stanowi niezależnego potwierdzenia stanu Azure.
+
+| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
+|---|---|---|---|---|---|
+| [azure-kubernetes-agentic-ops-eval](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval) | Zamknięty eksperyment | v0.2.0 opublikowane; wyniki i ograniczenia zachowane, ostatnie Test/Security zielone. | [Security: success](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/actions/runs/40859006483) | Brak dalszych działań w zamkniętym etapie. Nowe eksperymenty prowadzić w Lab. | — (zamknięte) |
 
 ## Forki — P7, pełna tabela 71 repo
 

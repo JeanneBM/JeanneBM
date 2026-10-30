@@ -1,38 +1,24 @@
 # Domknięcie P0 — historyczne laby Panda
 
-Stan na 30 października 2026.
+Stan na 30 października 2026 po wykonaniu skryptu przez Joannę.
 
-## Wykonane
+## Wykonane i zweryfikowane
 
-- Bieżące gałęzie `final` obu repo zawierają oczyszczone snapshoty: bez zapisanych wolumenów Jenkins/Artifactory i bez literalnych sekretów agenta.
-- Zweryfikowano po jednej gałęzi i brak tagów. Historie mają odpowiednio 2 i 3 commity; można zachować ich kolejność, opisy i autorstwo, zastępując niebezpieczne drzewa oczyszczonymi snapshotami.
-- Przygotowano [skrypt PowerShell](../scripts/clear-pandaenv-history.ps1). Przepisanie zmienia hashe commitów i nie zachowuje ich starych podpisów kryptograficznych.
+- Bieżące pliki obu repo są oczyszczone z zapisanego stanu Jenkins/Artifactory, kluczy i literalnych sekretów agenta.
+- Historia obu gałęzi `final` została przepisana. Zweryfikowano bezpośrednio przez API wszystkie osiągalne commity: 2 w `jb_pandaenv`, 3 w `jb_pandaenvAWS`. W żadnym snapshotcie nie ma dawnych wolumenów i wskazanych plików poświadczeń.
+- W obu repo istnieje jedna gałąź `final` i brak tagów.
 
-## Nadal niewykonane
+| Repo | Zweryfikowany head po przepisaniu |
+|---|---|
+| `JeanneBM/jb_pandaenv` | `568363eed8d94e089139e5107d55df545ce49206` |
+| `JeanneBM/jb_pandaenvAWS` | `034728e57ded9925bb340dae8ef9f1e369bb8d14` |
 
-1. **Rotacja/unieważnienie.** W ustawieniach GitHub sprawdzić tokeny powiązane z historycznymi poświadczeniami „personal github” i „Github JoannaDemo”. Odwołać używane ujawnione tokeny; jeśli poświadczenia były hasłami i są nadal używane, zmienić je. Nie wklejać ich do czatu ani raportu. Dla działających instancji Jenkins/Artifactory zmienić odpowiednie dane administratora, tokeny, sekrety agentów i klucze zgodnie z procedurą usługi. Jeżeli stare instancje nie istnieją i dane nie są ponownie używane, zapisać ten fakt jako „nie dotyczy”; nie tworzyć ich ponownie tylko do rotacji.
-2. **Historia gałęzi.** Uruchomić poniższy skrypt z komputera z Git, PowerShell i zalogowanym GitHub CLI.
-3. **Pozostałe kopie GitHuba.** Po przepisaniu historii skontaktować się z GitHub Support w sprawie danych w nieosiągalnych commitach/cache/refach PR. Zmiana gałęzi nie daje gwarancji usunięcia ich z infrastruktury GitHuba, forków i cudzych klonów.
+[Skrypt](../scripts/clear-pandaenv-history.ps1) pozostaje zapisem wykonanej operacji. Nie uruchamiać go ponownie: jego zapisane stare heady celowo już nie pasują. Zachowano oczyszczony układ historii; stare hashe i podpisy nie mogą pozostać po przepisaniu.
 
-## Uruchomienie historii
+## Pozostałe czynności — niepotwierdzone
 
-Z aktualnego lokalnego checkoutu `JeanneBM/JeanneBM`, w PowerShell:
+1. W ustawieniach odpowiednich kont GitHub odwołać nadal używane tokeny powiązane z historycznymi poświadczeniami „personal github” i „Github JoannaDemo”. Zmienić nadal używane ujawnione hasła. Nie wklejać wartości do czatu ani raportu.
+2. Dla istniejących instancji Jenkins/Artifactory zmienić odpowiednie dane administratora, tokeny, sekrety agentów i klucze zgodnie z procedurą usługi. Jeśli stare instancje nie istnieją i dane nie są ponownie używane, zapisać to jako „nie dotyczy”; nie odtwarzać dawnych wolumenów w celu rotacji.
+3. Zgłosić do GitHub Support usunięcie nieosiągalnych commitów/cache/refów PR z ujawnionymi danymi. Przepisanie gałęzi nie dowodzi usunięcia obiektów z infrastruktury GitHuba, forków ani cudzych klonów.
 
-```powershell
-git pull --ff-only
-powershell -NoProfile -File .\scripts\clear-pandaenv-history.ps1 -VerifyOnly
-```
-
-Po poprawnym preflight uruchomić zapis:
-
-```powershell
-powershell -NoProfile -File .\scripts\clear-pandaenv-history.ps1
-```
-
-Skrypt ma zakres ograniczony do `JeanneBM/jb_pandaenv` i `JeanneBM/jb_pandaenvAWS`, gałęzi `final` oraz zapisanych, zweryfikowanych headów. Odmawia pracy po zmianie gałęzi lub pojawieniu się nowych branchy/tagów. Nie pobiera dawnych danych usług ani nie odszyfrowuje poświadczeń. Pobiera wyłącznie nowy, oczyszczony graf Git i stosuje `--force-with-lease`, więc nie nadpisze późniejszych zmian. Przed publikacją przygotowuje i weryfikuje oba grafy. Publikacja dwóch repo nie jest atomowa; komunikaty wskazują status każdego z nich.
-
-Po udanym wykonaniu używać świeżych klonów. Nie scalać ani nie wypychać starej historii z dawnych kopii. Zachować wynik polecenia do weryfikacji raportu, bez żadnych wartości sekretów.
-
-## Granica wykonania w tej sesji
-
-Plugin GitHub obsługuje commity z rodzicem, ale nie utworzenie nowego commita początkowego. Lokalny runtime nie ma uwierzytelnionego GitHub CLI. Próba jednorazowego workflow nie utworzyła żadnego runu Actions; jego commit wycofano z `final`. Nie pozostawiono aktywnego workflow zapisującego historię. Dlatego skrypt jest przygotowany do wykonania przez właścicielkę, a przepisanie historii i rotacja nie są oznaczone jako wykonane.
+Używać świeżych klonów obu repo. Nie scalać ani nie wypychać starej historii z dawnych kopii. Sam brak sekretów w obecnych gałęziach nie potwierdza unieważnienia dawnych poświadczeń ani usunięcia kopii zewnętrznych.

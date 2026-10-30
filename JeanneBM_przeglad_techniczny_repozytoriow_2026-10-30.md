@@ -8,7 +8,8 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 
 | Priorytet | Kiedy działać | Cel |
 |---|---|---|
-| P1 | Najpierw | Uruchomić pilot AKS Readiness Diagnostic Agent; następnie sprawdzić CI Foundry RAG i poprawić status na profilu. |
+| P0 | Pilnie: ujawnienie poświadczeń | Unieważnić używane poświadczenia i oczyścić historię pandaenv; bieżące pliki są już oczyszczone. |
+| P1 | Najpierw w rozwoju | Uruchomić pilot AKS Readiness Diagnostic Agent; następnie sprawdzić CI Foundry RAG i poprawić status na profilu. |
 | P2 | Następny etap | Zebrać dowody działania najważniejszych PoC i jednej integracji. |
 | P3 | Po P1/P2 lub dla wybranego demo | Zweryfikować pozostałe aktywne projekty i narzędzia. |
 | P4 | Po spełnieniu zależności | Rozbudować Lab, ML oraz wspólną platformę na sprawdzonych komponentach. |
@@ -19,6 +20,15 @@ Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięci
 Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Przy kolejnych aktualizacjach zachować Readiness na pierwszym miejscu do zakończenia pilota lub zmiany priorytetu przez Joannę. Zamknięte etapy bez konkretnego otwartego zadania mają osobną sekcję i nie otrzymują priorytetu działania. Samo zachowanie repo jako punktu odniesienia nie jest zadaniem. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
 
 ## Projekty niebędące forkami — 66 repo według pilności
+
+### P0 — ujawnienie poświadczeń: rotacja i historia
+
+Usunięcie plików z bieżącej gałęzi jest wykonane. Nie unieważnia wcześniej opublikowanych danych ani nie usuwa ich ze starych commitów, klonów i cache. Rotacja oraz oczyszczenie historii nie zostały potwierdzone. P0 ma pierwszeństwo przed planem rozwoju; Readiness pozostaje pierwszym projektem rozwojowym P1.
+
+| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
+|---|---|---|---|---|---|
+| [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv) | Ujawnione poświadczenia — bieżąca gałąź oczyszczona | Potwierdzono zapisany stan Jenkins/Artifactory oraz sekret agenta w skryptach. Usunięto runtime, klucze i sekrety z final; historia Git nadal je zawiera. | Brak zapisanych runów Actions | Odwołać/zmienić wszystkie używane ujawnione poświadczenia. Oczyścić historię Git i kopie/cache; potem ponownie przeskanować. Nie przywracać dawnych wolumenów. | P0 |
+| [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Ujawnione poświadczenia — bieżąca gałąź oczyszczona | Potwierdzono zapisany stan Jenkins/Artifactory oraz sekret agenta w skryptach. Usunięto runtime, klucze i sekrety z final; historia Git nadal je zawiera. | Brak zapisanych runów Actions | Odwołać/zmienić wszystkie używane ujawnione poświadczenia. Oczyścić historię Git i kopie/cache; potem ponownie przeskanować. Nie przywracać dawnych wolumenów. | P0 |
 
 ### P1 — najpierw: pilot Readiness i bieżące sprawdzenia
 
@@ -76,9 +86,9 @@ Wykonywać przy powrocie do projektu lub przygotowywaniu demonstracji. Starsze e
 | [jb_IoT](https://github.com/JeanneBM/jb_IoT) | Prototypy / warsztaty | Szkice Arduino, katalogi warsztatów i zdjęcia. | Brak zapisanych runów Actions | Opisać sprzęt oraz jedno odtwarzalne demo, jeśli ma pozostać w portfolio. | P5 |
 | [jb_OrderBook](https://github.com/JeanneBM/jb_OrderBook) | Mała aplikacja Java | Kod App.java i opis operacji order book; brak CI. | Brak zapisanych runów Actions | Dodać komendę build/run i testy podstawowych operacji przed rozwojem. | P5 |
 | [jb_StrideMate](https://github.com/JeanneBM/jb_StrideMate) | Częściowy prototyp | Skrypty przetwarzania zdjęć i danych; README opisuje szerszą wizję bez pełnego dowodu działania. | Brak zapisanych runów Actions | Doprowadzić jedno zdjęcie do poprawnie odczytanego rekordu; ocenić jakość ekstrakcji przed modelowaniem planu. | P5 |
-| [jb_symfony-roadrunner-task-api-devops](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Implementacja zadania | PHP/Symfony, Compose, PostgreSQL/Redis, konfiguracje testów; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Odtworzyć uruchomienie, wykonać testy i opisać wyniki; traktować jako oddzielny przykład DevOps. | P5 |
+| [jb_symfony-roadrunner-task-api-devops](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Implementacja / wyczyszczono APP_SECRET | PHP/Symfony, Compose, PostgreSQL/Redis, konfiguracje testów; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Ustawić NOWY APP_SECRET i hasło bazy lokalnie; zmienić stare, jeśli używane. Odtworzyć uruchomienie, wykonać testy i opisać wyniki; traktować jako oddzielny przykład DevOps. | P5 |
 | [n8n-self-hosted-lab](https://github.com/JeanneBM/n8n-self-hosted-lab) | Konfiguracja labu | Compose SQLite/PostgreSQL oraz backup/restore; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Zweryfikować odtworzenie workflow z backupu; dla PostgreSQL dodać i przetestować osobny backup bazy. | P5 |
-| [Online-Chat-Server-Contest-Requirements](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements) | Aplikacja / regresje | Spring Boot, frontend, Compose, testy i mapa wymagań; CI regresji zielone. | [Chat regression tests: success](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements/actions/runs/38735926198) | Wykonać smoke dwóch użytkowników na PostgreSQL/Compose i zestawić z pozostałymi lukami wymagań. | P5 |
+| [Online-Chat-Server-Contest-Requirements](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements) | Aplikacja / usunięto śledzony .env | Spring Boot, frontend, Compose, testy i mapa wymagań; CI regresji zielone. | [Chat regression tests: success](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements/actions/runs/38735926198) | Ustawić NOWE lokalne sekrety; odwołać stare, jeżeli były używane. Następnie wykonać smoke dwóch użytkowników na PostgreSQL/Compose i zestawić z pozostałymi lukami wymagań. | P5 |
 
 ### P6 — backlog: bez aktywnego zobowiązania
 
@@ -95,7 +105,7 @@ Brak pilnej pracy wdrożeniowej. Porządkowanie dokumentacji jest opcjonalne i w
 
 | Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
 |---|---|---|---|---|---|
-| [ai-knowledge-base](https://github.com/JeanneBM/ai-knowledge-base) | Baza wiedzy | Materiały kursów, agentów i AI; duży zbiór. | Brak zapisanych runów Actions | Dodać mapę wejścia: podstawy, agenci, ewaluacja, bezpieczeństwo i projekty praktyczne. | P7 |
+| [ai-knowledge-base](https://github.com/JeanneBM/ai-knowledge-base) | Baza wiedzy | Materiały kursów, agentów i AI; lokalną konfigurację Foundry zastąpiono anonimowym .env.example. | Brak zapisanych runów Actions | Dodać mapę wejścia: podstawy, agenci, ewaluacja, bezpieczeństwo i projekty praktyczne. | P7 |
 | [ai-security](https://github.com/JeanneBM/ai-security) | Materiały koncepcyjne | Dokumenty control-management, DORA i AI Act; brak aplikacji. | Brak zapisanych runów Actions | Uporządkować indeks i wskazać źródła oraz daty; wybrać jeden praktyczny przykład kontroli. | P7 |
 | [aideas-ai-agents](https://github.com/JeanneBM/aideas-ai-agents) | Materiały szkoleniowe | Zrzuty, materiały genAI i prompt; nie jest to gotowy system agentowy. | Brak zapisanych runów Actions | Opisać jedno ćwiczenie: wejście, rozwiązanie i rezultat; zachować jako materiały. | P7 |
 | [azure-knowledge-base](https://github.com/JeanneBM/azure-knowledge-base) | Baza wiedzy | Materiały certyfikacyjne AB-100/AB-620/AZ-104/GH-500; skromny główny README. | Brak zapisanych runów Actions | Dodać indeks egzaminów i oznaczyć daty aktualności materiałów. | P7 |
@@ -113,8 +123,6 @@ Brak pilnej pracy wdrożeniowej. Porządkowanie dokumentacji jest opcjonalne i w
 | [jb_Groovy](https://github.com/JeanneBM/jb_Groovy) | Zbiór skryptów | Przykłady Jenkinsfile/Groovy; prawie pusty README. | Brak zapisanych runów Actions | Opisać cel, wejścia i wymagane pluginy każdego przykładu. | P7 |
 | [jb_Helper](https://github.com/JeanneBM/jb_Helper) | Notatki / przykłady | Materiały Vault i katalogi erste/zweite. | Brak zapisanych runów Actions | Opisać zakres katalogów; zachować jako referencję. | P7 |
 | [jb_moj_projekt_panda](https://github.com/JeanneBM/jb_moj_projekt_panda) | Historyczna aplikacja | Spring Boot/Thymeleaf, Maven i testy. | Brak zapisanych runów Actions | Zachować; uzupełnić opis build/run tylko jeśli ma być pokazywana. | P7 |
-| [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv) | Historyczne środowisko | Compose, Dockerfiles, volumes, start.sh i plik nazwany secret-file; brak głównego README. | Brak zapisanych runów Actions | Opisać lab i sprawdzić, czy secret-file jest wyłącznie nieaktywnym przykładem, bez publikowania jego treści. | P7 |
-| [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Historyczne środowisko AWS | Compose, Dockerfiles, volumes, start.sh i plik nazwany secret-file; brak głównego README. | Brak zapisanych runów Actions | Opisać zależność od aplikacji i sprawdzić charakter pliku secret-file; nie uruchamiać starej infrastruktury przypadkowo. | P7 |
 | [jb_projektowe](https://github.com/JeanneBM/jb_projektowe) | Historyczny lab | Java/Maven, Jenkinsfile, Dockerfile i testy; powiązanie z pandaenv. | Brak zapisanych runów Actions | Opisać powiązanie z repo środowiska i zachować jako dawny lab CI/CD. | P7 |
 | [jb_projektoweAWS](https://github.com/JeanneBM/jb_projektoweAWS) | Historyczny lab AWS | Java/Maven, Jenkins, Terraform i Ansible. | Brak zapisanych runów Actions | Zachować; przed jakimkolwiek uruchomieniem sprawdzić konfigurację i koszty infrastruktury. | P7 |
 | [jb_pytest_env](https://github.com/JeanneBM/jb_pytest_env) | Historyczne ćwiczenia | Python i testy, w tym Selenium; README szczątkowe. | Brak zapisanych runów Actions | Dodać opis środowiska i zakresu ćwiczeń; uruchamiać dopiero przy potrzebie. | P7 |
@@ -230,6 +238,8 @@ Nie przypisuję tym repo statusu własnego produktu. Każde może mieć wartoś�
 - Readiness ma działającą implementację i offline/native-Go checks, ale dokumentacja pozostawia pełny kind pipeline i model pilot do lokalnej walidacji.
 - Agent Policy Guard nie jest jeszcze wspólną biblioteką używaną przez pozostałe repo — to konkretna luka integracyjna, nie powód do pisania kolejnego silnika.
 - Monitor ma emitery i collector; Anomaly ML ma wyniki syntetyczne, a nie dowód skuteczności na realnym strumieniu.
-- Plik o nazwie secret-file w dwóch historycznych pandaenv wymaga sprawdzenia charakteru. Sama nazwa nie dowodzi wycieku; nie odczytywano ani nie kopiowano jego zawartości.
-- Przegląd nie obejmował zmian w kodzie, archiwizacji ani usuwania repozytoriów. Aktualizacja tego raportu porządkuje zadania według pilności.
+- Aktualizacja bezpieczeństwa: w obu pandaenv potwierdzono credentials.xml z opisami poświadczeń GitHub, zapisany stan usług i literalny sekret agenta. Bieżące gałęzie final oczyszczono bez odszyfrowywania poświadczeń; rotacja i usunięcie historii pozostają niepotwierdzone. Poprzednia kwalifikacja P7 była błędna.
+- Dodatkowo usunięto śledzony .env z Chat Servera, usunięto jego współdzielone domyślne sekrety runtime, wyczyszczono APP_SECRET w Symfony i zastąpiono konkretną konfigurację Foundry szablonem w ai-knowledge-base. Nie ustalono aktywności dawnych wartości.
+- Zakres dodatkowego sprawdzenia: nazwy plików w 66 własnych repo, 76 wybranych plików konfiguracyjnych i 236 plików tekstowych w sześciu powiązanych repo. Część plików nakłada się; nie jest to pełny skan historii, archiwów, plików binarnych ani wszystkich branchy.
+- Pierwotny przegląd był tylko odczytem. Po zgłoszeniu ujawnienia wprowadzono opisane wyżej zmiany sanitizujące w pięciu repo. Repozytoriów nie usuwano ani nie archiwizowano; historii Git nie przepisano.
 

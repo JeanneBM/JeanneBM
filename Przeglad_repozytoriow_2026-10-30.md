@@ -1,177 +1,71 @@
-# Przegląd techniczny repozytoriów JeanneBM — 30 października 2026
+# Kolejka prac nad repozytoriami JeanneBM
 
-Zakres: 137 publicznych repozytoriów: 66 niebędących forkami i 71 forków. „Własne” w tym raporcie oznacza wyłącznie GitHub fork=false, nie audyt autorstwa.
+Aktualizacja: 30 października 2026.
 
-Metoda: aktualne metadane wszystkich repo; README, struktura plików i do pięciu ostatnich runów Actions dla repo niebędących forkami. Nie uruchamiano aplikacji, testów, modeli ani Azure. Dla forków oceniono wyłącznie metadane i rolę referencyjną; nie porównywano ich kodu z upstream. To przegląd techniczny i rekomendacje, nie audyt bezpieczeństwa ani certyfikat gotowości. Brak runów Actions nie dowodzi braku testów lokalnych/Travis/Jenkins. Zielony ostatni run nie dowodzi live integracji ani zgodności z najnowszym commitem; odsyłacze prowadzą do konkretnych przebiegów.
+Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej listy. Zadania zależne rozpoczynaj po spełnieniu warunku w tabeli.
 
-## Status P0 — 30 października 2026
+## P0 — pozostałe czynności bezpieczeństwa
 
-- **WYKONANE:** usunięcie sekretów i zapisanego stanu usług z bieżących plików obu Panda labów.
-- **WYKONANE I ZWERYFIKOWANE:** Joanna uruchomiła skrypt i przepisała historię obu gałęzi `final`. Niezależnie odczytano z GitHuba wszystkie osiągalne commity: 2 w `jb_pandaenv` i 3 w `jb_pandaenvAWS`; brak dawnych wolumenów i wskazanych plików poświadczeń w każdym snapshotcie. Każde repo ma tylko `final`, bez tagów.
-- Zweryfikowane heady: `jb_pandaenv` — `568363eed8d94e089139e5107d55df545ce49206`; `jb_pandaenvAWS` — `034728e57ded9925bb340dae8ef9f1e369bb8d14`.
-- **NIEPOTWIERDZONE:** unieważnienie/rotacja nadal używanych poświadczeń oraz usunięcie nieosiągalnych commitów/cache i kopii zewnętrznych. [Dalsze kroki](docs/pandaenv-credential-closeout.md). To jedyne pozostające czynności P0; nie uruchamiać ponownie zakończonego skryptu ani nie przywracać starej historii.
-
-## Kolejność działań według pilności
-
-| Priorytet | Kiedy działać | Cel |
+| Kolejność | Zakres | Do zrobienia |
 |---|---|---|
-| P0 | Pilnie: ujawnienie poświadczeń | Potwierdzić unieważnienie używanych poświadczeń i usunięcie pozostałych kopii/cache; pliki oraz historia gałęzi Panda są oczyszczone. |
-| P1 | Najpierw w rozwoju | Uruchomić pilot AKS Readiness Diagnostic Agent; następnie sprawdzić CI Foundry RAG i poprawić status na profilu. |
-| P2 | Następny etap | Zebrać dowody działania najważniejszych PoC i jednej integracji. |
-| P3 | Po P1/P2 lub dla wybranego demo | Zweryfikować pozostałe aktywne projekty i narzędzia. |
-| P4 | Po spełnieniu zależności | Rozbudować Lab, ML oraz wspólną platformę na sprawdzonych komponentach. |
-| P5 | Przy powrocie do projektu | Utrzymanie i drobne usprawnienia. |
-| P6 | Dopiero po wyborze pomysłu | Backlog bez zaplanowanego wykonania. |
-| P7 | W miarę korzystania | Materiały referencyjne i historia. |
+| 1 | [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv), [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Potwierdzić, czy dawne poświadczenia są nadal używane. Jeśli tak, odwołać tokeny i zmienić hasła/klucze w odpowiednich kontach i usługach; jeśli nie, potwierdzić wycofanie usług i brak ponownego użycia danych. |
+| 2 | Oba repo Panda | Zgłosić do GitHub Support usunięcie pozostałych nieosiągalnych commitów/cache/refów PR zawierających ujawnione dane. |
+| 3 | [Chat Server](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements), [Symfony](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Potwierdzić, czy dawne wartości z konfiguracji były używane poza przykładami. Jeśli tak, zmienić odpowiednie sekrety aplikacyjne i hasła bazy w działających środowiskach. |
 
-Priorytet dotyczy **następnej czynności**, a nie wartości repozytorium. Przy kolejnych aktualizacjach zachować Readiness na pierwszym miejscu do zakończenia pilota lub zmiany priorytetu przez Joannę. Zamknięte etapy bez konkretnego otwartego zadania mają osobną sekcję i nie otrzymują priorytetu działania. Samo zachowanie repo jako punktu odniesienia nie jest zadaniem. W ramach sekcji P1–P4 wiersze są ułożone w zalecanej kolejności; pozostałe sekcje zachowują porządek alfabetyczny. Nie wyznaczono terminów ani nie wykonano ponownej walidacji technicznej repozytoriów przy tej zmianie raportu.
+## P1 — najbliższa praca
 
-## Projekty niebędące forkami — 66 repo według pilności
+Readiness jest pierwszym projektem rozwojowym do zakończenia pilota lub zmiany priorytetu przez Joannę.
 
-### P0 — pozostałe czynności: rotacja i kopie zewnętrzne
+| Kolejność | Repozytorium | Do zrobienia |
+|---|---|---|
+| 1 | [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Sprawdzić lokalne wymagania, nagrać osiem przypadków Uvicorn/Go na kind, uruchomić A1 i powtarzany pilot C1/H na tych samych nagraniach. |
+| 2 | [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Uruchomić CI na aktualnym main i naprawić ewentualne błędy. Następnie wykonać setup → pytanie znane/nieznane → zweryfikowane usunięcie labu. |
+| 3 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Zaktualizować README profilu: status Eval i link do v0.2.0; uwzględnić Readiness, Lab i Auditor w krótkiej formie. |
 
-Pliki i osiągalna historia obu gałęzi `final` są oczyszczone i zweryfikowane. Pozostają potwierdzenie unieważnienia używanych poświadczeń oraz usunięcie kopii/cache poza tymi gałęziami. P0 nie wymaga ponownego czyszczenia plików ani uruchomienia skryptu. Readiness pozostaje pierwszym projektem rozwojowym P1.
+## P2 — integracje i walidacja kluczowych PoC
 
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [jb_pandaenv](https://github.com/JeanneBM/jb_pandaenv) | Pliki i historia gałęzi oczyszczone | Zweryfikowano wszystkie osiągalne commity final (2/3), brak dawnych wolumenów i wskazanych plików poświadczeń; jedna gałąź, brak tagów. | Brak zapisanych runów Actions | Potwierdzić odwołanie/rotację nadal używanych poświadczeń lub wycofanie usług. Zgłosić nieosiągalne commity/cache do GitHub Support. Nie uruchamiać ponownie skryptu. | P0 |
-| [jb_pandaenvAWS](https://github.com/JeanneBM/jb_pandaenvAWS) | Pliki i historia gałęzi oczyszczone | Zweryfikowano wszystkie osiągalne commity final (2/3), brak dawnych wolumenów i wskazanych plików poświadczeń; jedna gałąź, brak tagów. | Brak zapisanych runów Actions | Potwierdzić odwołanie/rotację nadal używanych poświadczeń lub wycofanie usług. Zgłosić nieosiągalne commity/cache do GitHub Support. Nie uruchamiać ponownie skryptu. | P0 |
+| Kolejność | Repozytorium | Do zrobienia |
+|---|---|---|
+| 1 | [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | Podłączyć jeden rzeczywisty przepływ CI lub labu. Testem wykazać, że decyzja deny uniemożliwia wywołanie executora. |
+| 2 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | Zebrać prawdziwe zdarzenia wybranego agenta. Sprawdzić alarm, restart kolektora i utratę źródła. |
+| 3 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Sprawdzić live model na S01. Następnie dołączyć rzeczywiste logi Actions i izolowaną walidację patcha. |
+| 4 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
 
-### P1 — najpierw: pilot Readiness i bieżące sprawdzenia
+## P3 — kolejne aktywne projekty
 
-**Pierwszy projekt do pracy: AKS Readiness Diagnostic Agent — zgodnie z priorytetem wskazanym przez Joannę.** Najbliższy rezultat to nagranie rzeczywistych przypadków na kind i pilot A1/C1/H. Sprawdzenie Foundry RAG i aktualizacja profilu są kolejnymi czynnościami; nie blokują rozpoczęcia Readiness. P1 nie oznacza potwierdzonego incydentu ani awarii produkcyjnej.
+| Kolejność | Repozytorium | Do zrobienia |
+|---|---|---|
+| 1 | [regulatory-rag-assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Wykonać import EUR-Lex i sprawdzić granice artykułów. Przygotować 30–50 ocenionych pytań oraz zmierzyć retrieval, cytowania, odmowy i odpowiedzi. |
+| 2 | [dual-agent-code-workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Uruchomić demo, potem kontrolowane zadanie na rzeczywistych API obu modeli. Ocenić propozycję i recenzję. |
+| 3 | [reusable-github-actions](https://github.com/JeanneBM/reusable-github-actions) | Dodać workflow konsumenta, który uruchamia akcje i sprawdza ich rezultaty oraz obsługę błędów. |
+| 4 | [jb_myKubeApp](https://github.com/JeanneBM/jb_myKubeApp) | Sprawdzić świeży pełny start na kind i smoke test. Zachować dowód działania demo. |
 
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Implementacja / przed pilotem | A1/C1/H, kolektor, replay i lokalny lab Uvicorn/Go; CI zielone. Pełny kind i model czekają na walidację. | [offline-checks: success](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/actions/runs/40382145081) | Nagrać osiem realnych przypadków na kind, uruchomić A1, potem powtarzany pilot C1/H. | P1 |
-| [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | Implementacja / niepotwierdzona integracja | Foundry + Search/MCP, walidacja cytowań i lab lifecycle. Ostatni zapisany CI czerwony, z 20.08; późniejszy kod wymaga nowego sprawdzenia. | [.github/workflows/ci.yml: failure](https://github.com/JeanneBM/azure-foundry-rag-agent/actions/runs/32368674184) | Uruchomić CI na obecnym main i usunąć przyczynę niepowodzenia; potem setup → known/unknown smoke → delete. | P1 |
-| [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Profil / dokumentacja | README prezentuje 9 projektów; nadal mówi „Evaluation is ongoing”. | Brak zapisanych runów Actions | Zaktualizować status Eval na zamknięte v0.2.0; dodać Readiness, Lab i Auditor bez przeładowania profilu. | P1 |
+## P4 — zadania zależne od wcześniejszych wyników
 
-### P2 — następny etap: walidacja kluczowych PoC
+| Kolejność | Repozytorium | Warunek rozpoczęcia | Do zrobienia |
+|---|---|---|---|
+| 1 | [azure-kubernetes-agentic-ops-lab](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-lab) | Pierwszy pilot Readiness | Napisać kontrakt nagrania i deterministyczny replay jednego S01, następnie pętlę eksperymentu na kind. |
+| 2 | [agent-anomaly-ml](https://github.com/JeanneBM/agent-anomaly-ml) | Rzeczywista telemetria z monitora | Dodać CI istniejących testów oraz adapter telemetrii; skalibrować detektory na osobnych, ocenionych poprawnych runach. |
+| 3 | [agents-platform-bicep](https://github.com/JeanneBM/agents-platform-bicep) | Niezależna walidacja aplikacji | Wykonać pełny up → smoke → status → down z raportami i potwierdzonym usunięciem zasobów. |
 
-Po pilocie Readiness z P1 sprawdzić Guard i Monitor na jednym wybranym przepływie, a następnie pozostałe PoC z tej sekcji.
+## P5 — opcjonalnie, przy powrocie do projektu
 
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | PoC biblioteki | Silnik YAML, allow/deny/escalate/require_human, wrapper i audyt; CI zielone. Brak migracji pozostałych repo. | [tests: success](https://github.com/JeanneBM/agent-policy-guard/actions/runs/39468858553) | Podłączyć jeden rzeczywisty przepływ CI lub labu; dowieść testem, że deny uniemożliwia wywołanie executora. | P2 |
-| [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | PoC monitoringu | Reguły, JSONL/Kubernetes, watch, SQLite i health; CI zielone. Emitery są opisane jako zintegrowane, brak tu dowodu pełnego live cyklu. | [Test monitor: success](https://github.com/JeanneBM/observability-monitor-agent/actions/runs/38720770387) | Zebrać prawdziwe zdarzenia z jednego agenta; sprawdzić alarm, restart i przerwę źródła. | P2 |
-| [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | PoC na scenariuszach | LangGraph, 4 scenariusze, polityka, checkpointy i zgoda człowieka; CI zielone. Brak realnego PR i zdalnego CI. | [Tests: success](https://github.com/JeanneBM/langgraph-ci-repair-agent/actions/runs/38720793161) | Sprawdzić live model na S01; następnie adapter rzeczywistych logów Actions i izolowana walidacja patcha. | P2 |
-| [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Deterministyczny PoC | Audyt snapshotów K8s, import Trivy, offline scanner adapter i raport HTML/JSON; CI zielone. | [offline-python-checks: success](https://github.com/JeanneBM/offline-environment-auditor/actions/runs/40488555390) | Zweryfikować Trivy na realnym lokalnym archiwum z siecią wyłączoną i ocenić fałszywe alarmy snapshotów. | P2 |
+| Repozytorium | Do zrobienia |
+|---|---|
+| [archive](https://github.com/JeanneBM/archive) | Przygotować czytelny indeks zawartości i pochodzenia materiałów. |
+| [azure-kubernetes-agentic-ops](https://github.com/JeanneBM/azure-kubernetes-agentic-ops), [PoC](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) | Wskazać w README podział: końcowe wyniki w Eval, dalszy rozwój w Lab. |
+| [jb_DevoteeDistro](https://github.com/JeanneBM/jb_DevoteeDistro) | Uzgodnić README z plikami i sprawdzić checker oddzielnie od instalacji systemu. |
+| [jb_ImageMatcher](https://github.com/JeanneBM/jb_ImageMatcher) | Zmierzyć trafność i błędne dopasowania na opisanym zbiorze zdjęć. |
+| [jb_IoT](https://github.com/JeanneBM/jb_IoT) | Opisać sprzęt i jedno odtwarzalne demo. |
+| [jb_OrderBook](https://github.com/JeanneBM/jb_OrderBook) | Dodać komendę build/run i testy podstawowych operacji. |
+| [jb_StrideMate](https://github.com/JeanneBM/jb_StrideMate) | Doprowadzić jedno zdjęcie do poprawnego rekordu danych; ocenić ekstrakcję przed modelowaniem planu. |
+| [Symfony](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Skonfigurować lokalne sekrety, odtworzyć uruchomienie i wykonać testy. |
+| [n8n-self-hosted-lab](https://github.com/JeanneBM/n8n-self-hosted-lab) | Przetestować odtworzenie workflow z backupu; dodać osobny backup i restore PostgreSQL. |
+| [Chat Server](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements) | Z nowymi lokalnymi sekretami przejść smoke dwóch użytkowników na PostgreSQL/Compose i zweryfikować pozostałe luki wymagań. |
 
-### P3 — dalsze walidacje i usprawnienia
+## P6 — pomysły do świadomego wyboru
 
-Po podstawowych zadaniach P1/P2 albo po świadomym wybraniu danego projektu do najbliższego demo.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [regulatory-rag-assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | PoC / offline | TF-IDF, parser AI Act/DORA, cytowania, CLI i Streamlit; CI zielone. Live ingestion i Azure niezweryfikowane. | [Tests: success](https://github.com/JeanneBM/regulatory-rag-assistant/actions/runs/39464300600) | Wykonać ingestion EUR-Lex, sprawdzić granice artykułów, potem 30–50 ocenionych pytań i pomiary retrieval/odmowy. | P3 |
-| [dual-agent-code-workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Lokalny PoC | Streamlit, autor/recenzent GPT–Claude, import PR, historia; CI zielone. Demo skryptowane, API testowane mockami. | [Tests: success](https://github.com/JeanneBM/dual-agent-code-workbench/actions/runs/39328615064) | Uruchomić demo, potem jeden kontrolowany live run obu modeli i ocenić propozycję oraz recenzję. | P3 |
-| [reusable-github-actions](https://github.com/JeanneBM/reusable-github-actions) | Starter | Katalogi setup-terraform/trivy/cosign i security-scan; brak własnych zapisanych runów CI. | Brak zapisanych runów Actions | Dodać workflow konsumenta, który wywoła akcje i sprawdzi faktyczne efekty oraz błędy. | P3 |
-| [jb_myKubeApp](https://github.com/JeanneBM/jb_myKubeApp) | Lab implementowany | Python + Java + Jenkins, kind, skrypty i testy; CI zielone. | [CI: success](https://github.com/JeanneBM/jb_myKubeApp/actions/runs/38600264559) | Potwierdzić świeży pełny start oraz smoke na lokalnym kind i zachować krótki dowód demo. | P3 |
-
-### P4 — rozwój zależny od wcześniejszych wyników
-
-To zależności techniczne, nie terminy. Lab po pierwszym pilocie Readiness; Anomaly ML po zebraniu telemetrii; wspólna platforma po niezależnym sprawdzeniu jej aplikacji.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [azure-kubernetes-agentic-ops-lab](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-lab) | Koncepcja | Tylko README; cztery role i roadmapa, brak implementacji. | Brak zapisanych runów Actions | Napisać kontrakt nagrania i deterministyczny replay jednego S01; potem pętla na kind. | P4 |
-| [agent-anomaly-ml](https://github.com/JeanneBM/agent-anomaly-ml) | Eksperyment syntetyczny | Reguły, robust-z, Mahalanobis, Isolation Forest i wyniki wielu seedów; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Dodać CI istniejących testów i adapter realnej telemetrii monitora; skalibrować na osobnych znanych dobrych runach. | P4 |
-| [agents-platform-bicep](https://github.com/JeanneBM/agents-platform-bicep) | Implementacja / przed live Azure | Bicep, up/status/down, przypięte repo i adaptery; ostatni validate zielony. Dokumentacja nie potwierdza live wdrożenia. | [validate: success](https://github.com/JeanneBM/agents-platform-bicep/actions/runs/38721114721) | Po niezależnej walidacji aplikacji wykonać jeden pełny up → smoke → status → down z raportami. | P4 |
-
-### P5 — utrzymanie i zadania o niskiej pilności
-
-Wykonywać przy powrocie do projektu lub przygotowywaniu demonstracji. Starsze etapy Agentic Ops zachować jako historię; nie rozwijać wszystkich równolegle.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [archive](https://github.com/JeanneBM/archive) | Zbiór historyczny | Kopie materiałów i kodu; README zawiera skrypt archiwizacji/usuwania zamiast katalogu zasobów. | Brak zapisanych runów Actions | Zastąpić stronę główną czytelnym indeksem pochodzenia; zachować materiały i historię. | P5 |
-| [azure-kubernetes-agentic-ops](https://github.com/JeanneBM/azure-kubernetes-agentic-ops) | Wcześniejsza implementacja | Kod, manifesty i testy; ostatni Security zielony. Poprzednik PoC/Eval. | [pip in /. - Update #1660987589: success](https://github.com/JeanneBM/azure-kubernetes-agentic-ops/actions/runs/40727324467) | Oznaczyć rolę historyczną i wskazać Eval v0.2.0/Lab; nie rozwijać równoległej wersji bez potrzeby. | P5 |
-| [azure-kubernetes-agentic-ops-poc](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc) | Poprzedni etap | Kod dwóch agentów, dokumentacja i demo; Test/Security zielone. | [Security: success](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-poc/actions/runs/40848537187) | Zachować demo i historię; jasno wskazać, że wyniki końcowe są w Eval, a nowy rozwój w Lab. | P5 |
-| [jb_DevoteeDistro](https://github.com/JeanneBM/jb_DevoteeDistro) | Częściowy prototyp | README ze strukturą planowanej dystrybucji, materiały i pojedynczy skrypt; pełna struktura nieobecna. | Brak zapisanych runów Actions | Uzgodnić README z plikami; jeśli wraca do rozwoju, uruchomić checker oddzielnie od instalacji systemu. | P5 |
-| [jb_ImageMatcher](https://github.com/JeanneBM/jb_ImageMatcher) | Mały prototyp | image_matcher.py, requirements i opis użycia; brak CI. | Brak zapisanych runów Actions | Sprawdzić na opisanym zbiorze zdjęć i zmierzyć trafność oraz błędne dopasowania. | P5 |
-| [jb_IoT](https://github.com/JeanneBM/jb_IoT) | Prototypy / warsztaty | Szkice Arduino, katalogi warsztatów i zdjęcia. | Brak zapisanych runów Actions | Opisać sprzęt oraz jedno odtwarzalne demo, jeśli ma pozostać w portfolio. | P5 |
-| [jb_OrderBook](https://github.com/JeanneBM/jb_OrderBook) | Mała aplikacja Java | Kod App.java i opis operacji order book; brak CI. | Brak zapisanych runów Actions | Dodać komendę build/run i testy podstawowych operacji przed rozwojem. | P5 |
-| [jb_StrideMate](https://github.com/JeanneBM/jb_StrideMate) | Częściowy prototyp | Skrypty przetwarzania zdjęć i danych; README opisuje szerszą wizję bez pełnego dowodu działania. | Brak zapisanych runów Actions | Doprowadzić jedno zdjęcie do poprawnie odczytanego rekordu; ocenić jakość ekstrakcji przed modelowaniem planu. | P5 |
-| [jb_symfony-roadrunner-task-api-devops](https://github.com/JeanneBM/jb_symfony-roadrunner-task-api-devops) | Implementacja / wyczyszczono APP_SECRET | PHP/Symfony, Compose, PostgreSQL/Redis, konfiguracje testów; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Ustawić NOWY APP_SECRET i hasło bazy lokalnie; zmienić stare, jeśli używane. Odtworzyć uruchomienie, wykonać testy i opisać wyniki; traktować jako oddzielny przykład DevOps. | P5 |
-| [n8n-self-hosted-lab](https://github.com/JeanneBM/n8n-self-hosted-lab) | Konfiguracja labu | Compose SQLite/PostgreSQL oraz backup/restore; brak zapisanych runów Actions. | Brak zapisanych runów Actions | Zweryfikować odtworzenie workflow z backupu; dla PostgreSQL dodać i przetestować osobny backup bazy. | P5 |
-| [Online-Chat-Server-Contest-Requirements](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements) | Aplikacja / usunięto śledzony .env | Spring Boot, frontend, Compose, testy i mapa wymagań; CI regresji backend/frontend po sanitizacji zielone; testowy JWT jest generowany losowo. | [Chat regression tests: success](https://github.com/JeanneBM/Online-Chat-Server-Contest-Requirements/actions/runs/41056965260) | Ustawić NOWE lokalne sekrety; odwołać stare, jeżeli były używane. Następnie wykonać smoke dwóch użytkowników na PostgreSQL/Compose i zestawić z pozostałymi lukami wymagań. | P5 |
-
-### P6 — backlog: bez aktywnego zobowiązania
-
-Pomysły do ponownego wyboru po zakończeniu bieżących eksperymentów.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [jb_pyAWS](https://github.com/JeanneBM/jb_pyAWS) | Pomysł / opis | Tylko README o automatyzacji AWS; brak skryptów implementujących opis. | Brak zapisanych runów Actions | Oznaczyć jako koncepcję; implementować tylko po wybraniu konkretnego zastosowania. | P6 |
-| [LLM-as-a-judge-multi-agent](https://github.com/JeanneBM/LLM-as-a-judge-multi-agent) | Pomysł | Tylko nagłówek README, brak kodu. | Brak zapisanych runów Actions | Zostawić w backlogu; najpierw zdefiniować rubrykę, ludzkie etykiety i punkt odniesienia. | P6 |
-
-### P7 — materiały referencyjne i historia
-
-Brak pilnej pracy wdrożeniowej. Porządkowanie dokumentacji jest opcjonalne i wykonywane przy korzystaniu z materiałów; zachowanie nie oznacza usunięcia ani archiwizacji repo.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [ai-knowledge-base](https://github.com/JeanneBM/ai-knowledge-base) | Baza wiedzy | Materiały kursów, agentów i AI; lokalną konfigurację Foundry zastąpiono anonimowym .env.example. | Brak zapisanych runów Actions | Dodać mapę wejścia: podstawy, agenci, ewaluacja, bezpieczeństwo i projekty praktyczne. | P7 |
-| [ai-security](https://github.com/JeanneBM/ai-security) | Materiały koncepcyjne | Dokumenty control-management, DORA i AI Act; brak aplikacji. | Brak zapisanych runów Actions | Uporządkować indeks i wskazać źródła oraz daty; wybrać jeden praktyczny przykład kontroli. | P7 |
-| [aideas-ai-agents](https://github.com/JeanneBM/aideas-ai-agents) | Materiały szkoleniowe | Zrzuty, materiały genAI i prompt; nie jest to gotowy system agentowy. | Brak zapisanych runów Actions | Opisać jedno ćwiczenie: wejście, rozwiązanie i rezultat; zachować jako materiały. | P7 |
-| [azure-knowledge-base](https://github.com/JeanneBM/azure-knowledge-base) | Baza wiedzy | Materiały certyfikacyjne AB-100/AB-620/AZ-104/GH-500; skromny główny README. | Brak zapisanych runów Actions | Dodać indeks egzaminów i oznaczyć daty aktualności materiałów. | P7 |
-| [containers-knowledge-base](https://github.com/JeanneBM/containers-knowledge-base) | Baza wiedzy | Materiały Docker/K8s/Istio/Operators i środowiska. | Brak zapisanych runów Actions | Dodać mapę materiałów i wskazać aktualne działające laby. | P7 |
-| [IBMi-knowledge-base](https://github.com/JeanneBM/IBMi-knowledge-base) | Zarchiwizowana baza wiedzy (archived) | Repo archived; README z materiałami IBM i. | Brak zapisanych runów Actions | Zachować jako referencję; brak potrzeby dalszej pracy przy obecnym kierunku AI. | P7 |
-| [International-Business-Machines](https://github.com/JeanneBM/International-Business-Machines) | Materiały historyczne | Katalogi IBM Cloud, Containers, Python i DevOps; brak README. | Brak zapisanych runów Actions | Dodać krótki opis źródeł i zakresu; zachować. | P7 |
-| [java-knowledge-base](https://github.com/JeanneBM/java-knowledge-base) | Baza wiedzy | Duży zbiór ćwiczeń i notatek Java. | Brak zapisanych runów Actions | Uporządkować indeks; rozwijać jedynie przy potrzebie powtórek Java. | P7 |
-| [jb_Ansible](https://github.com/JeanneBM/jb_Ansible) | Materiały | Notatki i materiały Ansible/RHCE. | Brak zapisanych runów Actions | Zachować; nie nadawać priorytetu względem projektów AI. | P7 |
-| [jb_CPP](https://github.com/JeanneBM/jb_CPP) | Ćwiczenia historyczne | Kod i materiały C++; brak głównego README.md. | Brak zapisanych runów Actions | Dodać krótki opis historycznego zbioru; bez rozbudowy w obecnej ścieżce. | P7 |
-| [jb_DataBase](https://github.com/JeanneBM/jb_DataBase) | Materiały | SQL, PostgreSQL, MySQL i ćwiczenia; brak głównego README.md. | Brak zapisanych runów Actions | Dodać indeks oraz jeden przykład uruchomienia SQL na testowej bazie. | P7 |
-| [jb_Dev_PyCalculator](https://github.com/JeanneBM/jb_Dev_PyCalculator) | Historyczny projekt | Kalkulator Python, testy i konfiguracja Travis. | Brak zapisanych runów Actions | Oznaczyć historyczny zakres i sposób uruchomienia; bez równoległej rozbudowy. | P7 |
-| [jb_DevSecOps](https://github.com/JeanneBM/jb_DevSecOps) | Materiały | Katalogi CI/CD, Security, SDLC, DORA i kursów; brak głównego README.md. | Brak zapisanych runów Actions | Dodać indeks i linki do nowszych baz wiedzy bez kopiowania całej treści. | P7 |
-| [jb_Dictionary](https://github.com/JeanneBM/jb_Dictionary) | Słownik | Pliki terminologii programowania, języków i SQL. | Brak zapisanych runów Actions | Dodać prosty indeks; rozwój wyłącznie w miarę potrzeb. | P7 |
-| [jb_FlywayNewRepo](https://github.com/JeanneBM/jb_FlywayNewRepo) | Historyczny lab | Materiały/kod pod katalogiem branch - release-1; brak README. | Brak zapisanych runów Actions | Opisać scenariusz migracji i kolejność wykonania, jeśli przykład ma być używany. | P7 |
-| [jb_Groovy](https://github.com/JeanneBM/jb_Groovy) | Zbiór skryptów | Przykłady Jenkinsfile/Groovy; prawie pusty README. | Brak zapisanych runów Actions | Opisać cel, wejścia i wymagane pluginy każdego przykładu. | P7 |
-| [jb_Helper](https://github.com/JeanneBM/jb_Helper) | Notatki / przykłady | Materiały Vault i katalogi erste/zweite. | Brak zapisanych runów Actions | Opisać zakres katalogów; zachować jako referencję. | P7 |
-| [jb_moj_projekt_panda](https://github.com/JeanneBM/jb_moj_projekt_panda) | Historyczna aplikacja | Spring Boot/Thymeleaf, Maven i testy. | Brak zapisanych runów Actions | Zachować; uzupełnić opis build/run tylko jeśli ma być pokazywana. | P7 |
-| [jb_projektowe](https://github.com/JeanneBM/jb_projektowe) | Historyczny lab | Java/Maven, Jenkinsfile, Dockerfile i testy; powiązanie z pandaenv. | Brak zapisanych runów Actions | Opisać powiązanie z repo środowiska i zachować jako dawny lab CI/CD. | P7 |
-| [jb_projektoweAWS](https://github.com/JeanneBM/jb_projektoweAWS) | Historyczny lab AWS | Java/Maven, Jenkins, Terraform i Ansible. | Brak zapisanych runów Actions | Zachować; przed jakimkolwiek uruchomieniem sprawdzić konfigurację i koszty infrastruktury. | P7 |
-| [jb_pytest_env](https://github.com/JeanneBM/jb_pytest_env) | Historyczne ćwiczenia | Python i testy, w tym Selenium; README szczątkowe. | Brak zapisanych runów Actions | Dodać opis środowiska i zakresu ćwiczeń; uruchamiać dopiero przy potrzebie. | P7 |
-| [jb_Rubi](https://github.com/JeanneBM/jb_Rubi) | Ćwiczenia Ruby | Skrypty Ruby i katalog RubyOnRails; brak README. | Brak zapisanych runów Actions | Krótko opisać zbiór i zachować. | P7 |
-| [jb_Saffron](https://github.com/JeanneBM/jb_Saffron) | Materiały osobiste / edukacyjne | Zbiór tematów, wzorców, języków i notatek; brak README. | Brak zapisanych runów Actions | Nadać prosty opis przeznaczenia; bez obowiązku rozwoju. | P7 |
-| [jb_sample](https://github.com/JeanneBM/jb_sample) | Historyczny przykład Java | Maven/Jetty, README wskazuje JDK 7, są artefakty target. | Brak zapisanych runów Actions | Oznaczyć stary runtime i status referencyjny; modernizować tylko jako osobny cel. | P7 |
-| [jb_Terraform](https://github.com/JeanneBM/jb_Terraform) | Materiały / przykład | README instalacyjne, Summary.tf i materiały egzaminacyjne. | Brak zapisanych runów Actions | Oddzielić notatki od przykładu IaC; opisać wymagania, jeśli przykład ma być uruchamiany. | P7 |
-| [jb_TheList](https://github.com/JeanneBM/jb_TheList) | Materiały / konfiguracje | Katalogi Centos7, Template, tomcat i inne; pusty README. | Brak zapisanych runów Actions | Wyjaśnić przeznaczenie i historyczny zakres; bez rozszerzania teraz. | P7 |
-| [jb_Tools](https://github.com/JeanneBM/jb_Tools) | Zbiór narzędzi | Komendy i przykłady AWS/Docker/Jenkins/Maven; brak README. | Brak zapisanych runów Actions | Dodać mapę zawartości i wskazać bezpieczne środowisko testowe skryptów. | P7 |
-| [jb_VariousDemos](https://github.com/JeanneBM/jb_VariousDemos) | Ćwiczenia | Przykłady CSS/Groovy/HTML/JavaScript; brak README. | Brak zapisanych runów Actions | Dodać indeks przykładów, zachować jako materiał. | P7 |
-| [jb_WelcomesApplication](https://github.com/JeanneBM/jb_WelcomesApplication) | Mały projekt Java | Kod aplikacji i katalog test; brak README. | Brak zapisanych runów Actions | Dodać krótki opis i komendę uruchomienia; bez priorytetu rozwoju. | P7 |
-| [jb_Workshops](https://github.com/JeanneBM/jb_Workshops) | Lista źródeł | Tylko README z linkami do wyszukiwania wydarzeń. | Brak zapisanych runów Actions | Zostawić jako prywatny punkt odniesienia lub uporządkować linki; nie traktować jako projekt kodowy. | P7 |
-| [linux-knowledge-base](https://github.com/JeanneBM/linux-knowledge-base) | Baza wiedzy | Notatki, komendy, skrypty i materiały Linux. | Brak zapisanych runów Actions | Dodać prosty indeks tematów i osobno oznaczyć przykłady oraz rzeczywiste notatki operacyjne. | P7 |
-| [multicould-knowledge-base](https://github.com/JeanneBM/multicould-knowledge-base) | Baza wiedzy | Katalogi AWS, Azure, GCP, IBM i Notes; brak głównego README.md. | Brak zapisanych runów Actions | Dodać krótki indeks katalogów i ich zakresu. | P7 |
-| [PyCalculator-python-ibm-mentoring](https://github.com/JeanneBM/PyCalculator-python-ibm-mentoring) | Zarchiwizowany projekt (archived) | Kod kalkulatora, testy i stare badge; archived. | Brak zapisanych runów Actions | Zachować jako historię mentoringu; nie wracać do utrzymania bez konkretnej potrzeby. | P7 |
-| [python-knowledge-base](https://github.com/JeanneBM/python-knowledge-base) | Baza wiedzy | Obszerna powtórka PL i przykłady; brak runów Actions. | Brak zapisanych runów Actions | Używać do powtórek; wybrane wykonywalne przykłady weryfikować przed dopisywaniem. | P7 |
-| [quantum-progamming](https://github.com/JeanneBM/quantum-progamming) | Notatki / materiały | README ze zrzutami; brak programu do uruchomienia. | Brak zapisanych runów Actions | Dodać jeden odtwarzalny notebook/eksperyment tylko gdy wracasz do Qiskit. | P7 |
-| [security-knowledge-base](https://github.com/JeanneBM/security-knowledge-base) | Baza wiedzy | Powtórka DevSecOps/SAST/SCA/Trivy/SBOM i materiały; brak runów Actions. | Brak zapisanych runów Actions | Powiązać pojęcia z przykładami z własnych projektów; aktualizować w miarę nauki. | P7 |
-
-### Zamknięte etapy — brak działań
-
-Repozytoria ukończone w ustalonym zakresie; nie są częścią aktywnej kolejki. Historyczne ograniczenia wyników pozostają opisane w dokumentacji projektu. Niepotwierdzony w dawnym closeout cleanup nie jest tu ponownie otwierany jako zadanie; raport nie stanowi niezależnego potwierdzenia stanu Azure.
-
-| Repozytorium | Stan | Co potwierdza stan / ograniczenie | Ostatni dostępny CI | Następny krok | Priorytet |
-|---|---|---|---|---|---|
-| [azure-kubernetes-agentic-ops-eval](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval) | Zamknięty eksperyment | v0.2.0 opublikowane; wyniki i ograniczenia zachowane, ostatnie Test/Security zielone. | [Security: success](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/actions/runs/40859006483) | Brak dalszych działań w zamkniętym etapie. Nowe eksperymenty prowadzić w Lab. | — (zamknięte) |
-
-## Forki — P7, 71 repozytoriów
-
-Pełna tabela 71 forków jest zachowana w [załączniku](docs/forki-repozytoriow-2026-10-30.md). Pozostają materiałami referencyjnymi, poza aktywną kolejką prac.
-
-## Konkretne uwagi
-
-- Profil nadal zawiera „Evaluation is ongoing”; Eval ma już opublikowane v0.2.0. Warto dodać link do wydania i krótki wynik, z ograniczeniem zakresu.
-- Foundry RAG: ostatni dostępny run Actions to failure z 20 sierpnia 2026, podczas gdy repo było później zmieniane. Odpowiedź jobs dla tego runu była pusta: przyczyny nie ustalono. Najpierw ponowne CI na aktualnym main, potem diagnoza na podstawie komunikatów.
-- Lab i LLM-as-a-judge-multi-agent: w drzewie tylko README. jb_pyAWS również ma wyłącznie README.
-- Readiness ma działającą implementację i offline/native-Go checks, ale dokumentacja pozostawia pełny kind pipeline i model pilot do lokalnej walidacji.
-- Agent Policy Guard nie jest jeszcze wspólną biblioteką używaną przez pozostałe repo — to konkretna luka integracyjna, nie powód do pisania kolejnego silnika.
-- Monitor ma emitery i collector; Anomaly ML ma wyniki syntetyczne, a nie dowód skuteczności na realnym strumieniu.
-- Aktualizacja bezpieczeństwa: w obu pandaenv potwierdzono credentials.xml z opisami poświadczeń GitHub, zapisany stan usług i literalny sekret agenta. Bieżące gałęzie final i ich osiągalne historie oczyszczono bez odszyfrowywania poświadczeń. Rotacja i usunięcie kopii poza gałęziami pozostają niepotwierdzone. Poprzednia kwalifikacja P7 była błędna.
-- Dodatkowo usunięto śledzony .env z Chat Servera, usunięto jego współdzielone domyślne sekrety runtime, wyczyszczono APP_SECRET w Symfony i zastąpiono konkretną konfigurację Foundry szablonem w ai-knowledge-base. Nie ustalono aktywności dawnych wartości.
-- Weryfikacja zmian: brak rozpoznanych starych wartości w zmienionych plikach, brak usuniętych ścieżek w bieżących drzewach, poprawna składnia pięciu plików YAML. Chat Server: Maven verify i testy frontendowe przeszły po dodaniu losowego JWT wyłącznie w profilu testowym. Nie uruchamiano dawnych usług Jenkins/Artifactory ani Symfony.
-- Zakres dodatkowego sprawdzenia: nazwy plików w 66 własnych repo, 76 wybranych plików konfiguracyjnych i 236 plików tekstowych w sześciu powiązanych repo. Część plików nakłada się; nie jest to pełny skan historii, archiwów, plików binarnych ani wszystkich branchy.
-- Pierwotny przegląd był tylko odczytem. Po zgłoszeniu ujawnienia wprowadzono opisane wyżej zmiany sanitizujące w pięciu repo. Repozytoriów nie usuwano ani nie archiwizowano; historię obu gałęzi Panda przepisano i zweryfikowano po lokalnym wykonaniu skryptu przez Joannę.
-
+| Repozytorium | Pierwsza czynność po wyborze |
+|---|---|
+| [jb_pyAWS](https://github.com/JeanneBM/jb_pyAWS) | Wybrać jedno konkretne zastosowanie i określić minimalny rezultat do implementacji. |
+| [LLM-as-a-judge-multi-agent](https://github.com/JeanneBM/LLM-as-a-judge-multi-agent) | Zdefiniować rubrykę oceny, ludzkie etykiety i punkt odniesienia przed implementacją. |

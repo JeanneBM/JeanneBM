@@ -34,7 +34,7 @@ A reproducible kind lab running Python and Java applications alongside Jenkins. 
 
 ### [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure)
 
-An ephemeral Azure lab with Terraform for AKS and ACR, Helm deployments, Jenkins dynamic agents, encrypted backup and recovery, and metrics, logs and alerts. PowerShell scripts prepare the complete start, test, backup and destroy lifecycle.
+An ephemeral Azure lab with Terraform for AKS and ACR, Helm deployments, Jenkins dynamic agents, offline backup with a separately stored controller key and recovery, and metrics, logs and alerts. PowerShell scripts prepare the complete start, test, backup and destroy lifecycle.
 
 **Status:** implemented in code, with local kind checks for Jenkins recovery and observability. Live Azure deployment and lifecycle validation are pending.
 

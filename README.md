@@ -1,68 +1,53 @@
-# Hi, I’m Joanna — JeanneBM 👋
+# Hi, I’m Joanna Bojko 👋
 
-**DevSecOps Engineer | Azure | Kubernetes | AI Agent Engineering**
+**AI Agent Engineering · DevSecOps · Azure · Kubernetes**
 
-I have 6+ years of experience across Linux administration, DevOps and DevSecOps. I build secure cloud platforms and delivery automation, and apply that engineering background to AI agents for infrastructure operations.
+I have 6+ years of experience across Linux administration, DevOps and DevSecOps. I build and evaluate AI agents for infrastructure operations, secure delivery and research. My projects focus on reproducible environments, least-privilege access and measurable results.
 
-My focus is practical: reproducible environments, least-privilege access, verified execution and evidence that shows when an agent adds value.
-
-**The model proposes; deterministic policy authorizes; execution is verified.**
-
-## Core strengths
-
-- **Cloud & platforms:** Azure, Kubernetes, AKS, Linux and Docker.
-- **Secure delivery:** DevSecOps, workload identities, least privilege and policy enforcement.
-- **CI/CD:** GitHub Actions, Azure DevOps, Jenkins, GitLab, Harbor and Argo CD.
-- **Automation:** Python, Groovy, Bash, PowerShell and YAML.
-- **AI agents:** LangChain, LangGraph, RAG, human review and evaluation against deterministic baselines.
+**The model proposes. Deterministic policy authorizes. Execution is verified.**
 
 ## Featured projects
 
 ### [Azure Kubernetes Agentic Ops & Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 
-Two agents for a bounded AKS recovery task: LLM-assisted diagnosis, deterministic authorization of container image-reference corrections and rollout verification. Separate identities and permissions keep diagnosis and execution apart.
+Two agents handle a bounded AKS recovery task: diagnosis and policy-controlled remediation, with separate identities and rollout verification. The evaluation recorded **98 outcomes**. On the comparable trials, the rules baseline passed **35/35** and the LLM-assisted variant **31/35**. [Evaluation snapshot v0.2.0](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/tree/v0.2.0)
 
-The evaluation closed on **29 October 2026**, with **98 recorded outcomes** across the campaign. Excluding S04 setup failures, the deterministic baseline achieved **35/35 PASS**, compared with **31/35 PASS** for the LLM-assisted variant. The model did not improve outcomes in this narrow task. Published evidence documents setup failures and limitations; human review was not completed.
+### [Regulatory RAG Assistant](https://github.com/JeanneBM/regulatory-rag-assistant)
 
-**Python · AKS · Azure OpenAI · Azure Workload Identity · ACR**
+Imports the AI Act and DORA from official EU sources and generates cited answers with Azure OpenAI. In a **10-question pilot**, the system cited the expected article for **8/8 answerable questions** and abstained on **2/2 controls**. Manual review identified cases where a real quotation supported only part of a claim. [Validation report](https://github.com/JeanneBM/regulatory-rag-assistant/blob/main/evidence/regulatory-rag-validation-2026-11-09.md)
 
-### [DevOps Platform Lab — Local](https://github.com/JeanneBM/devops-platform-lab-local)
+### [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent)
 
-A reproducible kind lab running Python and Java applications alongside Jenkins. GitHub Actions tests the applications, builds images, deploys the full lab and checks HTTP behavior. Successful main-branch runs publish the exact tested application images to GHCR.
+A LangGraph workflow that proposes CI repairs, checks them against deterministic policy and pauses for human approval before exporting a patch. In live Azure tests with synthetic CI failures, S01 reached patch export and S05 escalated after policy rejected a proposed change. [S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-09.md) · [S05 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s05-2026-11-09.md)
 
-**Kubernetes · kind · Docker · Jenkins · GitHub Actions · Python · Java**
+### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
 
-### [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure)
-
-An ephemeral Azure lab with Terraform for AKS and ACR, Helm deployments, Jenkins dynamic agents, offline backup with a separately stored controller key and recovery, and metrics, logs and alerts. PowerShell scripts prepare the complete start, test, backup and destroy lifecycle.
-
-**Status:** implemented in code, with local kind checks for Jenkins recovery and observability. Live Azure deployment and lifecycle validation are pending.
-
-**Azure · Terraform · AKS · Helm · Jenkins · PowerShell · Prometheus · Grafana · Loki**
+Microsoft Foundry agent backed by Azure AI Search through MCP. The Python client validates citation provenance and supports abstention on questions outside the knowledge base. Retrieval and refusal were exercised in the Foundry playground. [Validation notes](https://github.com/JeanneBM/azure-foundry-rag-agent#validation-and-current-evidence)
 
 ### [AKS Readiness Diagnostic Agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent)
 
-A read-only diagnostic experiment comparing explicit rules, an optional LLM and a rules-to-model cascade on the same Kubernetes evidence. Diagnoses include evidence references and uncertainty; recommendations are never executed.
+Read-only diagnosis with explicit rules, an LLM and a rules-first cascade. The development pilot replayed **eight scenarios recorded on kind**. The rules baseline passed **24/24 attempts**. Live AKS and independent held-out validation are pending. [Pilot evidence](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/blob/main/docs/status.md)
 
-**Status:** development implementation with synthetic fixtures and a local recording workflow. Live AKS validation and held-out model advantage are not established.
+### [DevOps Platform Lab — Local](https://github.com/JeanneBM/devops-platform-lab-local)
 
-**Python · Kubernetes · Diagnostic evaluation · Evidence replay**
+Reproducible Kubernetes lab on kind with Python and Java services and Jenkins. GitHub Actions tests the apps, builds images, deploys the lab and checks HTTP behavior. Successful main-branch runs publish the tested images to GHCR.
 
-## More AI engineering projects
-
-Maturity and validation status are documented in each repository.
+## More projects
 
 | Project | Focus |
 | --- | --- |
-| [Agent Policy Guard](https://github.com/JeanneBM/agent-policy-guard) | Early PoC of reusable, deterministic authorization for agent actions. |
-| [Regulatory RAG Assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Research PoC for AI Act and DORA retrieval with source and quote checks. |
-| [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | CI repair proposals with policy checks and human review. |
-| [Dual Agent Code Workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Local GPT–Claude code proposals and peer review, with human decisions. |
+| [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure) | Terraform for AKS and ACR, Helm, Jenkins recovery and observability. Recovery and observability were checked on kind. Live Azure lifecycle validation is pending. |
+| [Agent Policy Guard](https://github.com/JeanneBM/agent-policy-guard) | Reusable deterministic authorization for agent actions. |
+| [Dual Agent Code Workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | GPT and Claude propose and review code changes, with a human decision. |
 
-## AI assistants
+## Core strengths
+
+- **AI engineering:** Python, LangChain, LangGraph, RAG, Azure OpenAI and evaluation against deterministic baselines.
+- **Cloud and platforms:** Azure, Kubernetes, AKS, Terraform, Helm, Linux and Docker.
+- **Secure delivery:** GitHub Actions, Azure DevOps, Jenkins, Argo CD, workload identities and policy enforcement.
 
 My main AI assistants are **GPT, Claude and Grok**.
 
 ## Connect
 
-[LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joanna-bojko/badges)
+[LinkedIn](https://www.linkedin.com/in/joanna-bojko-486561224/) · [GitLab](https://gitlab.com/JeanneBM) · [Microsoft Learn](https://learn.microsoft.com/en-us/users/joannabojko-5711/) · [Credly](https://www.credly.com/users/joannabojko/badges)

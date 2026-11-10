@@ -1,4 +1,4 @@
-# Hi, I’m Joanna Bojko 👋
+# Hi, I’m JeanneBM 👋
 
 **AI Agent Engineering · DevSecOps · Azure · Kubernetes**
 

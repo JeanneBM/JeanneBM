@@ -14,11 +14,15 @@ Two agents handle a bounded AKS recovery task: diagnosis and policy-controlled r
 
 ### [Regulatory RAG Assistant](https://github.com/JeanneBM/regulatory-rag-assistant)
 
+**Stack:** Python · Azure OpenAI · [Optional LangChain + FAISS semantic search](https://github.com/JeanneBM/regulatory-rag-assistant/blob/main/langchain_rag.py)
+
 Imports the AI Act and DORA from official EU sources and generates cited answers with Azure OpenAI. In a **10-question pilot**, the system cited the expected article for **8/8 answerable questions** and abstained on **2/2 controls**. Manual review identified cases where a real quotation supported only part of a claim. [Validation report](https://github.com/JeanneBM/regulatory-rag-assistant/blob/main/evidence/regulatory-rag-validation-2026-11-09.md)
 
 ### [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent)
 
-A LangGraph workflow that proposes CI repairs, checks them against deterministic policy and pauses for human approval before exporting a patch. In live Azure tests with synthetic CI failures, S01 reached patch export and S05 escalated after policy rejected a proposed change. [S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-09.md) · [S05 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s05-2026-11-09.md)
+**Stack:** Python · LangGraph (workflow orchestration) · LangChain (structured model calls) · Azure OpenAI
+
+The workflow proposes CI repairs, checks them against deterministic policy and pauses for human approval before exporting a patch. In live Azure tests with synthetic CI failures, S01 reached patch export and S05 escalated after policy rejected a proposed change. [S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-09.md) · [S05 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s05-2026-11-09.md)
 
 ### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
 

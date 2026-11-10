@@ -1,6 +1,6 @@
 # Kolejka prac nad repozytoriami JeanneBM
 
-Aktualizacja: 6 listopada 2026.
+Aktualizacja: 10 listopada 2026.
 
 Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej listy. Zadania zależne rozpoczynaj po spełnieniu warunku w tabeli.
 
@@ -27,7 +27,7 @@ Readiness: następna praca to nagrania z ubogimi logami i przypadkami niejednozn
 
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
-| 1 | [regulatory-rag-assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Wykonać import EUR-Lex i sprawdzić granice artykułów. Przygotować 30–50 ocenionych pytań oraz zmierzyć retrieval, cytowania, odmowy i odpowiedzi. |
+| 1 | [regulatory-rag-assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Porównać domyślny TF-IDF z LangChain + FAISS na tych samych 10 pytaniach z pilota, z tym samym modelem czatu Azure OpenAI i filtrem aktu. Zacząć od pytania o ramy zarządzania ryzykiem ICT (DORA, art. 6). Zapisać dla obu ścieżek trafienie we właściwy artykuł, pełne poparcie odpowiedzi cytatem i poprawność odmów na pytaniach kontrolnych. Aby ocenić samo wyszukiwanie, porównać wyniki przed generowaniem na identycznych fragmentach korpusu. Płatne embeddingi i wywołania modelu uruchomić po zgodzie Joanny. Następnie rozszerzyć zbiór do 30–50 ocenionych pytań. |
 | 2 | [dual-agent-code-workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Uruchomić demo, potem kontrolowane zadanie na rzeczywistych API obu modeli. Ocenić propozycję i recenzję. |
 | 3 | [reusable-github-actions](https://github.com/JeanneBM/reusable-github-actions) | Dodać workflow konsumenta, który uruchamia akcje i sprawdza ich rezultaty oraz obsługę błędów. |
 | 4 | [devops-platform-lab-local](https://github.com/JeanneBM/devops-platform-lab-local) | Sprawdzić świeży pełny start na kind i smoke test. Zachować dowód działania demo. |

@@ -19,7 +19,7 @@ Readiness: następna praca to nagrania z ubogimi logami i przypadkami niejednozn
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
 | 1 | [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | Podłączyć jeden rzeczywisty przepływ CI lub labu. Testem wykazać, że decyzja deny uniemożliwia wywołanie executora. |
-| 2 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | Zebrać prawdziwe zdarzenia wybranego agenta. Sprawdzić alarm, restart kolektora i utratę źródła. |
+| 2 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | Pilot niezależnego obserwatora w trybie odczytu (shadow monitoring). Podłączyć `watch` do JSONL emitowanego przez LangGraph CI Repair (`AGENT_TELEMETRY_FILE`). Na lokalnych scenariuszach sprawdzić poprawny przebieg, kontrolowaną anomalię i utratę źródła. Pilot zaliczony, gdy poprawny przebieg nie alarmuje, anomalia daje oczekiwany alert, utrata źródła jest widoczna w `health.json`, a restart nie duplikuje alertów. Zapisać wyniki; potem sprawdzić jedno źródło logów lub zdarzeń środowiska Kubernetes w trybie odczytu. |
 | 3 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Sprawdzić live model na S01. Następnie dołączyć rzeczywiste logi Actions i izolowaną walidację patcha. |
 | 4 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
 

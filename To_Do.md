@@ -6,22 +6,22 @@ Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej list
 
 ## P1 — najbliższa praca
 
-Readiness: następna praca to nagrania z ubogimi logami i przypadkami niejednoznacznymi oraz obsługa czasu dowodów. Uruchomienie DevOps Platform Lab w Azure jest odłożone na późniejszą sesję i nie blokuje Readiness.
+Najbliższe zadanie to pilot niezależnego monitoringu. Następnie w Readiness przygotować nagrania z ubogimi logami i przypadkami niejednoznacznymi oraz obsługa czasu dowodów. Uruchomienie DevOps Platform Lab w Azure jest odłożone na późniejszą sesję i nie blokuje Readiness.
 
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
-| 1 | [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Rozbudować recorder o ubogie/domyślne logi i przypadki niejednoznaczne; etykietować tylko przyczyny rozpoznawalne z dowodów. Przetestować fallback H offline. Zachować czasy/count zdarzeń i przejścia Ready, ograniczyć duplikowanie logów. Dodać Entra ID do modelu. Kolejne płatne wywołania dopiero po zgodzie Joanny; zamrozić implementację przed niezależnym held-out. |
-| 2 | [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | **Poniedziałek, 9 listopada: zweryfikować [draft PR #18](https://github.com/JeanneBM/azure-foundry-rag-agent/pull/18).** Na gałęzi `hardening/entra-only-search` wykonać świeży setup, potwierdzić `disableLocalAuth=true` i `authOptions=null` komendą z PR, następnie `python scripts/lab.py smoke`. Po PASS zachować w repo przejrzany, zanonimizowany raport i wyniki kontroli; po zielonym CI i CodeQL oznaczyć PR jako gotowy i scalić. Przy błędzie pozostawić draft i zapisać przyczynę. Na koniec, także po nieudanej weryfikacji, wykonać `python scripts/lab.py delete --confirm rg-foundry-rag-demo` i potwierdzić usunięcie grupy. |
-| 3 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Uzupełnić README profilu o link do wydania Eval v0.2.0 oraz krótkie odnośniki do azure-kubernetes-agentic-ops-lab i offline-environment-auditor. |
+| 1 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | Pilot niezależnego obserwatora w trybie odczytu (shadow monitoring). Podłączyć `watch` do JSONL emitowanego przez LangGraph CI Repair (`AGENT_TELEMETRY_FILE`). Na lokalnych scenariuszach sprawdzić poprawny przebieg, kontrolowaną anomalię i utratę źródła. Pilot zaliczony, gdy poprawny przebieg nie alarmuje, anomalia daje oczekiwany alert, utrata źródła jest widoczna w `health.json`, a restart nie duplikuje alertów. Zapisać wyniki; potem sprawdzić jedno źródło logów lub zdarzeń środowiska Kubernetes w trybie odczytu. |
+| 2 | [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Rozbudować recorder o ubogie/domyślne logi i przypadki niejednoznaczne; etykietować tylko przyczyny rozpoznawalne z dowodów. Przetestować fallback H offline. Zachować czasy/count zdarzeń i przejścia Ready, ograniczyć duplikowanie logów. Dodać Entra ID do modelu. Kolejne płatne wywołania dopiero po zgodzie Joanny; zamrozić implementację przed niezależnym held-out. |
+| 3 | [azure-foundry-rag-agent](https://github.com/JeanneBM/azure-foundry-rag-agent) | **Poniedziałek, 9 listopada: zweryfikować [draft PR #18](https://github.com/JeanneBM/azure-foundry-rag-agent/pull/18).** Na gałęzi `hardening/entra-only-search` wykonać świeży setup, potwierdzić `disableLocalAuth=true` i `authOptions=null` komendą z PR, następnie `python scripts/lab.py smoke`. Po PASS zachować w repo przejrzany, zanonimizowany raport i wyniki kontroli; po zielonym CI i CodeQL oznaczyć PR jako gotowy i scalić. Przy błędzie pozostawić draft i zapisać przyczynę. Na koniec, także po nieudanej weryfikacji, wykonać `python scripts/lab.py delete --confirm rg-foundry-rag-demo` i potwierdzić usunięcie grupy. |
+| 4 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Uzupełnić README profilu o link do wydania Eval v0.2.0 oraz krótkie odnośniki do azure-kubernetes-agentic-ops-lab i offline-environment-auditor. |
 
 ## P2 — integracje i walidacja kluczowych PoC
 
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
 | 1 | [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | Podłączyć jeden rzeczywisty przepływ CI lub labu. Testem wykazać, że decyzja deny uniemożliwia wywołanie executora. |
-| 2 | [observability-monitor-agent](https://github.com/JeanneBM/observability-monitor-agent) | Pilot niezależnego obserwatora w trybie odczytu (shadow monitoring). Podłączyć `watch` do JSONL emitowanego przez LangGraph CI Repair (`AGENT_TELEMETRY_FILE`). Na lokalnych scenariuszach sprawdzić poprawny przebieg, kontrolowaną anomalię i utratę źródła. Pilot zaliczony, gdy poprawny przebieg nie alarmuje, anomalia daje oczekiwany alert, utrata źródła jest widoczna w `health.json`, a restart nie duplikuje alertów. Zapisać wyniki; potem sprawdzić jedno źródło logów lub zdarzeń środowiska Kubernetes w trybie odczytu. |
-| 3 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Sprawdzić live model na S01. Następnie dołączyć rzeczywiste logi Actions i izolowaną walidację patcha. |
-| 4 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
+| 2 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Sprawdzić live model na S01. Następnie dołączyć rzeczywiste logi Actions i izolowaną walidację patcha. |
+| 3 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
 
 ## P3 — kolejne aktywne projekty
 

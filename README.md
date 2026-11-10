@@ -10,6 +10,8 @@ I have 6+ years of experience across Linux administration, DevOps and DevSecOps.
 
 ### [Azure Kubernetes Agentic Ops & Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 
+**Stack:** Python · FastAPI · Kubernetes (AKS) · Azure OpenAI · Azure Workload Identity
+
 Two agents handle a bounded AKS recovery task: diagnosis and policy-controlled remediation, with separate identities and rollout verification. The evaluation recorded **98 outcomes**. On the comparable trials, the rules baseline passed **35/35** and the LLM-assisted variant **31/35**. [Evaluation snapshot v0.2.0](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval/tree/v0.2.0)
 
 ### [Regulatory RAG Assistant](https://github.com/JeanneBM/regulatory-rag-assistant)
@@ -26,13 +28,19 @@ The workflow proposes CI repairs, checks them against deterministic policy and p
 
 ### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
 
+**Stack:** Python · Microsoft Foundry SDK · Azure AI Search (knowledge base) · MCP (retrieval)
+
 Microsoft Foundry agent backed by Azure AI Search through MCP. The Python client validates citation provenance and supports abstention on questions outside the knowledge base. Retrieval and refusal were exercised in the Foundry playground. [Validation notes](https://github.com/JeanneBM/azure-foundry-rag-agent#validation-and-current-evidence)
 
 ### [AKS Readiness Diagnostic Agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent)
 
+**Stack:** Python · kubectl (read-only evidence collection) · kind (test cluster) · Azure OpenAI / OpenAI (optional LLM mode)
+
 Read-only diagnosis with explicit rules, an LLM and a rules-first cascade. The development pilot replayed **eight scenarios recorded on kind**. The rules baseline passed **24/24 attempts**. Live AKS and independent held-out validation are pending. [Pilot evidence](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/blob/main/docs/status.md)
 
 ### [DevOps Platform Lab — Local](https://github.com/JeanneBM/devops-platform-lab-local)
+
+**Stack:** Kubernetes (kind) · Docker · Kustomize · Flask · Java 21 · Jenkins · GitHub Actions
 
 Reproducible Kubernetes lab on kind with Python and Java services and Jenkins. GitHub Actions tests the apps, builds images, deploys the lab and checks HTTP behavior. Successful main-branch runs publish the tested images to GHCR.
 

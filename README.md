@@ -26,11 +26,11 @@ Imports the AI Act and DORA from official EU sources and generates cited answers
 
 The workflow proposes CI repairs, checks them against deterministic policy and pauses for human approval before exporting a patch. In live Azure tests with synthetic CI failures, S01 reached patch export and S05 escalated after policy rejected a proposed change. [S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-09.md) · [S05 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s05-2026-11-09.md)
 
-### [Azure Foundry RAG Agent](https://github.com/JeanneBM/azure-foundry-rag-agent)
+### [Azure Foundry RAG Assistant](https://github.com/JeanneBM/azure-foundry-rag-agent)
 
-**Stack:** Python · Microsoft Foundry SDK · Azure AI Search (knowledge base) · MCP (retrieval)
+**Stack:** Python · Microsoft Foundry SDK · Microsoft Foundry prompt agent · Azure AI Search (knowledge base) · MCP (retrieval)
 
-Microsoft Foundry agent backed by Azure AI Search through MCP. The Python client validates citation provenance and supports abstention on questions outside the knowledge base. Retrieval and refusal were exercised in the Foundry playground. [Validation notes](https://github.com/JeanneBM/azure-foundry-rag-agent#validation-and-current-evidence)
+A RAG assistant for document Q&A. The Python client checks citations against the sources retrieved for each answer. The assistant is configured to abstain when the knowledge base does not support an answer. Retrieval and refusal were exercised in the Foundry playground. [Validation notes](https://github.com/JeanneBM/azure-foundry-rag-agent#validation-and-current-evidence)
 
 ### [AKS Readiness Diagnostic Agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent)
 

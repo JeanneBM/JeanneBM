@@ -20,6 +20,8 @@ Two agents handle a bounded AKS recovery task: diagnosis and policy-controlled r
 
 Imports the AI Act and DORA from official EU sources and generates cited answers with Azure OpenAI. In a **10-question pilot**, the system cited the expected article for **8/8 answerable questions** and abstained on **2/2 controls**. Manual review identified cases where a real quotation supported only part of a claim. [Validation report](https://github.com/JeanneBM/regulatory-rag-assistant/blob/main/evidence/regulatory-rag-validation-2026-11-09.md)
 
+[Regulatory RAG Assistant v2](https://github.com/JeanneBM/regulatory-rag-assistant-v2) is an Azure redesign with point-level quotations and claim-support verification. Import of both acts was verified before deployment. End-to-end Azure evaluation is pending.
+
 ### [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent)
 
 **Stack:** Python · LangGraph (workflow orchestration) · LangChain (structured model calls) · Azure OpenAI
@@ -49,6 +51,7 @@ Reproducible Kubernetes lab on kind with Python and Java services and Jenkins. G
 | Project | Focus |
 | --- | --- |
 | [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure) | Terraform for AKS and ACR, Helm, Jenkins recovery and observability. Recovery and observability were checked on kind. Live Azure lifecycle validation is pending. |
+| [Agent Monitor v2](https://github.com/JeanneBM/observability-monitor-agent-v2) | Read-only monitoring of AI-agent telemetry for policy violations. A [kind smoke test](https://github.com/JeanneBM/observability-monitor-agent-v2/blob/main/evidence/kubernetes-smoke-2026-11-12.md#kind-smoke-real-pod-logs--pass) detected the injected violation in pod logs. |
 | [Agent Policy Guard](https://github.com/JeanneBM/agent-policy-guard) | Reusable deterministic authorization for agent actions. |
 | [Dual Agent Code Workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | GPT and Claude propose and review code changes, with a human decision. |
 

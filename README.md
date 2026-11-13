@@ -20,7 +20,7 @@ Two agents handle a bounded AKS recovery task: diagnosis and policy-controlled r
 
 Imports the AI Act and DORA from official EU sources and generates cited answers with Azure OpenAI. In a **10-question pilot**, the system cited the expected article for **8/8 answerable questions** and abstained on **2/2 controls**. Manual review identified cases where a real quotation supported only part of a claim. [Validation report](https://github.com/JeanneBM/regulatory-rag-assistant/blob/main/evidence/regulatory-rag-validation-2026-11-09.md)
 
-[Regulatory RAG Assistant v2](https://github.com/JeanneBM/regulatory-rag-assistant-v2) is an Azure redesign with point-level quotations and claim-support verification. Import of both acts was verified before deployment. End-to-end Azure evaluation is pending.
+[Regulatory RAG Assistant v2](https://github.com/JeanneBM/regulatory-rag-assistant-v2) is an Azure redesign with point-level quotations and claim-support verification. A [10-question pilot with local retrieval and Azure OpenAI](https://github.com/JeanneBM/regulatory-rag-assistant-v2/blob/main/evidence/eval-20261113T130444Z.md) cited the expected article for **7/8 answerable questions** and abstained on **2/2 controls**. Evaluation of the full Azure deployment is pending.
 
 ### [LangGraph CI Repair Agent](https://github.com/JeanneBM/langgraph-ci-repair-agent)
 

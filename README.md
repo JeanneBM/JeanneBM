@@ -38,7 +38,7 @@ A RAG assistant for document Q&A. The Python client checks citations against the
 
 **Stack:** Python · kubectl (read-only evidence collection) · kind (test cluster) · Azure OpenAI / OpenAI (optional LLM mode)
 
-Read-only diagnosis with explicit rules, an LLM and a rules-first cascade. The development pilot replayed **eight scenarios recorded on kind**. The rules baseline passed **24/24 attempts**. Live AKS and independent held-out validation are pending. [Pilot evidence](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/blob/main/docs/status.md)
+Read-only diagnosis with explicit rules, an LLM and a rules-first cascade. The development pilot replayed **eight scenarios recorded on kind**. The rules baseline passed **24/24 attempts**. Live AKS and independent held-out validation are pending. [Pilot evidence](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/blob/main/docs/status.md) The [preregistered second phase](https://github.com/JeanneBM/aks-readiness-diagnostic-agent/blob/main/docs/phase-2-protocol.md) defines 13 cases for testing when the LLM adds value. The evaluation gate and fallback were checked offline with scripted models.
 
 ### [DevOps Platform Lab — Local](https://github.com/JeanneBM/devops-platform-lab-local)
 

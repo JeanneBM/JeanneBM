@@ -50,7 +50,7 @@ Reproducible Kubernetes lab on kind with Python and Java services and Jenkins. G
 
 | Project | Focus |
 | --- | --- |
-| [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure) | Terraform for AKS and ACR, Helm, Jenkins recovery and observability. Recovery and observability were checked on kind. Live Azure lifecycle validation is pending. |
+| [DevOps Platform Lab — Azure](https://github.com/JeanneBM/devops-platform-lab-azure) | Terraform for AKS and ACR, Helm, Jenkins recovery and observability. [CI on kind](https://github.com/JeanneBM/devops-platform-lab-azure/blob/main/evidence/2026-11-17-L1.md) verified app deployments, Jenkins dynamic agents and backup/restore, and alert firing and recovery. Live Azure lifecycle validation is pending. |
 | [Agent Monitor v2](https://github.com/JeanneBM/observability-monitor-agent-v2) | Read-only monitoring of AI-agent telemetry for policy violations. A [kind smoke test](https://github.com/JeanneBM/observability-monitor-agent-v2/blob/main/evidence/kubernetes-smoke-2026-11-12.md#kind-smoke-real-pod-logs--pass) detected the injected violation in pod logs. |
 | [Agent Policy Guard](https://github.com/JeanneBM/agent-policy-guard) | Reusable deterministic authorization for agent actions. |
 | [Dual Agent Code Workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | GPT and Claude propose and review code changes, with a human decision. |

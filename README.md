@@ -34,7 +34,7 @@ Imports the AI Act and DORA from official EU sources and generates cited answers
 
 **Stack:** Python · LangGraph (workflow orchestration) · LangChain (structured model calls) · Azure OpenAI
 
-The workflow proposes CI repairs, checks them against deterministic policy and pauses for human approval before exporting a patch. In live Azure tests with synthetic CI failures, S01 reached patch export and S05 escalated after policy rejected a proposed change. [S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-09.md) · [S05 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s05-2026-11-09.md)
+The v1.0 proof of concept proposes CI repairs, checks them against deterministic policy, validates candidates in isolation and requires human approval before exporting a patch. With scripted model responses and logs from real GitHub Actions fixture jobs, five scenarios reached patch export and one escalated. A separate Azure OpenAI run reached patch export for S01. [CI fixture evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/real-actions-logs-2026-11-17.md) · [Azure S01 evidence](https://github.com/JeanneBM/langgraph-ci-repair-agent/blob/main/evidence/live-azure-s01-2026-11-17.md)
 
 ### [Azure Foundry RAG Assistant](https://github.com/JeanneBM/azure-foundry-rag-assistant)
 

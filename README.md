@@ -6,13 +6,15 @@ I have 6+ years of experience across Linux administration, DevOps and DevSecOps.
 
 **The model proposes. Deterministic policy authorizes. Execution is verified.**
 
-## Featured projects
+## Published
 
 ### [code-bloat-review](https://github.com/JeanneBM/code-bloat-review)
 
 **Stack:** Python · GitHub Actions
 
 A GitHub Action that reviews the whole codebase for complexity disproportionate to what the project does. It returns a **YES / PARTLY / NO** verdict, a **0–100 score** and findings tied to Clean Code heuristics. Two implementations of the same to-do app scored **0/100** and **73.7/100**. Version **v1.0.0** is published on GitHub Marketplace, and the post-release smoke test verified the report and outputs using `@v1`. [Marketplace listing](https://github.com/marketplace/actions/code-bloat-review) · [Smoke test](https://github.com/JeanneBM/code-bloat-review/actions/runs/44341098059)
+
+## Featured
 
 ### [Azure Kubernetes Agentic Ops & Evaluation](https://github.com/JeanneBM/azure-kubernetes-agentic-ops-eval)
 

@@ -1,6 +1,6 @@
 # Kolejka prac nad repozytoriami JeanneBM
 
-Aktualizacja: 13 listopada 2026.
+Aktualizacja: 20 listopada 2026.
 
 Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej listy. Zadania zależne rozpoczynaj po spełnieniu warunku w tabeli.
 
@@ -8,7 +8,7 @@ Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej list
 
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
-| 1 | [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Rozbudować recorder o ubogie/domyślne logi i przypadki niejednoznaczne; etykietować tylko przyczyny rozpoznawalne z dowodów. Przetestować fallback H offline. Zachować czasy/count zdarzeń i przejścia Ready, ograniczyć duplikowanie logów. Dodać Entra ID do modelu. Kolejne płatne wywołania dopiero po zgodzie Joanny; zamrozić implementację przed niezależnym held-out. |
+| 1 | [aks-readiness-diagnostic-agent](https://github.com/JeanneBM/aks-readiness-diagnostic-agent) | Nagrać 13 przypadków fazy 2 w kind (`--matrix phase2`), przejrzeć i zapisać nagrania oraz bezpłatny replay A1. Po zgodzie Joanny wykonać prerejestrowany replay A1/C1/H i `tools/phase2_gate.py`. Zachować czasy/count zdarzeń i przejścia Ready, ograniczyć duplikowanie logów. Dodać Entra ID. Przed niezależnym held-out zamrozić implementację i konfigurację. |
 | 2 | [java-ci-triage-agent](https://github.com/JeanneBM/java-ci-triage-agent) | Przygotować krótkie demo PoC Spring Boot + LangChain4j + Langfuse. Uruchomić lokalnie `mvn -B -ntp verify` i sprawdzić oba przykłady Maven przez `POST /triage`: `DIAGNOSED` z cytatem z logu oraz `NEEDS_MORE_EVIDENCE` przy braku danych. Pokazać ślad w Langfuse bez surowych logów. Test z rzeczywistym modelem wykonać na danych syntetycznych po zgodzie Joanny na płatne wywołanie. |
 | 3 | [azure-foundry-rag-assistant](https://github.com/JeanneBM/azure-foundry-rag-assistant) | **Zweryfikować [draft PR #18](https://github.com/JeanneBM/azure-foundry-rag-assistant/pull/18).** Na gałęzi `hardening/entra-only-search` wykonać świeży setup, potwierdzić `disableLocalAuth=true` i `authOptions=null` komendą z PR, następnie `python scripts/lab.py smoke`. Po PASS zachować w repo przejrzany, zanonimizowany raport i wyniki kontroli; po zielonym CI i CodeQL oznaczyć PR jako gotowy i scalić. Przy błędzie pozostawić draft i zapisać przyczynę. Na koniec, także po nieudanej weryfikacji, wykonać `python scripts/lab.py delete --confirm rg-foundry-rag-demo` i potwierdzić usunięcie grupy. |
 | 4 | [JeanneBM](https://github.com/JeanneBM/JeanneBM) | Uzupełnić README profilu o krótkie odnośniki do azure-kubernetes-agentic-ops-lab i offline-environment-auditor. |
@@ -17,9 +17,7 @@ Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej list
 
 | Kolejność | Repozytorium | Do zrobienia |
 |---|---|---|
-| 1 | [agent-policy-guard](https://github.com/JeanneBM/agent-policy-guard) | Podłączyć jeden rzeczywisty przepływ CI lub labu. Testem wykazać, że decyzja deny uniemożliwia wywołanie executora. |
-| 2 | [langgraph-ci-repair-agent](https://github.com/JeanneBM/langgraph-ci-repair-agent) | Dołączyć rzeczywiste logi Actions i izolowaną walidację patcha. |
-| 3 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
+| 1 | [offline-environment-auditor](https://github.com/JeanneBM/offline-environment-auditor) | Zweryfikować Trivy na rzeczywistym lokalnym archiwum obrazu z wyłączoną siecią. Ocenić fałszywe alarmy na reprezentatywnych snapshotach. |
 
 ## P3 — kolejne aktywne projekty
 
@@ -27,9 +25,8 @@ Wiersze wskazują kolejność pracy. Po zakończeniu zadania usuń je z tej list
 |---|---|---|
 | 1 | [regulatory-rag-assistant](https://github.com/JeanneBM/regulatory-rag-assistant) | Porównać domyślny TF-IDF z LangChain + FAISS na tych samych 10 pytaniach z pilota, z tym samym modelem czatu Azure OpenAI i filtrem aktu. Zacząć od pytania o ramy zarządzania ryzykiem ICT (DORA, art. 6). Zapisać dla obu ścieżek trafienie we właściwy artykuł, pełne poparcie odpowiedzi cytatem i poprawność odmów na pytaniach kontrolnych. Aby ocenić samo wyszukiwanie, porównać wyniki przed generowaniem na identycznych fragmentach korpusu. Płatne embeddingi i wywołania modelu uruchomić po zgodzie Joanny. Następnie rozszerzyć zbiór do 30–50 ocenionych pytań. |
 | 2 | [dual-agent-code-workbench](https://github.com/JeanneBM/dual-agent-code-workbench) | Uruchomić demo, potem kontrolowane zadanie na rzeczywistych API obu modeli. Ocenić propozycję i recenzję. |
-| 3 | [reusable-github-actions](https://github.com/JeanneBM/reusable-github-actions) | Dodać workflow konsumenta, który uruchamia akcje i sprawdza ich rezultaty oraz obsługę błędów. |
-| 4 | [devops-platform-lab-local](https://github.com/JeanneBM/devops-platform-lab-local) | Sprawdzić świeży pełny start na kind i smoke test. Zachować dowód działania demo. |
-| 5 | [regulatory-rag-assistant-v2](https://github.com/JeanneBM/regulatory-rag-assistant-v2) | Wykonać pełny pilot na Azure i porównać poparcie twierdzeń, odmowy i koszt z wynikami v1 na tych samych 10 pytaniach. Po sesji potwierdzić usunięcie zasobów. |
+| 3 | [devops-platform-lab-local](https://github.com/JeanneBM/devops-platform-lab-local) | Sprawdzić świeży pełny start na kind i smoke test. Zachować dowód działania demo. |
+| 4 | [regulatory-rag-assistant-v2](https://github.com/JeanneBM/regulatory-rag-assistant-v2) | Wdrożyć aktualną wersję z NIST AI RMF i ponowić ingest do indeksu schema v2. Przeprowadzić pełną ewaluację Azure na 10 pytaniach oraz nowych pytaniach NIST, ocenić poparcie twierdzeń, odmowy i koszt. Po sesji zweryfikować usunięcie zasobów. |
 
 ## P4 — zadania zależne od wcześniejszych wyników
 
